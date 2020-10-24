@@ -16,6 +16,6 @@
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
 		</li>
 	</modDependencies>
-    <description><![CDATA[This mod blocks some unwanted alerts, messages, and features that Rimworld has.]]>
+    <description><![CDATA[This mod blocks some unwanted messages, alerts, letters, and misc features that Rimworld has, with mod settings enabled so you can toggle off any you don't want blocked.]]>
     </description>
 </ModMetaData>

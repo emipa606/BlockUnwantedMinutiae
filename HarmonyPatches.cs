@@ -26,14 +26,20 @@ namespace BlockUnwantedMinutiae
     [HarmonyPatch(typeof(Messages))]
     [HarmonyPatch("Message")]
     [HarmonyPatch(new Type[] { typeof(string), typeof(LookTargets), typeof(MessageTypeDef), typeof(bool)})]
-    static class TaintedMessagePatch
+    static class ApparelMessagePatch
     {
         static bool Prefix(string text)
         {
-            if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().taintedMessagePatch == false) return true;
-            
             string targetMsg = "MessageDeterioratedAway".Translate(""); // blank arg so we don't have {0}
-            string pattern = @".*T\)\s*" + targetMsg;
+            string pattern = @".*\)\s*" + targetMsg;
+
+            if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().apparelMessagePatch == false)
+            {
+                pattern = @".*T\)\s*" + targetMsg;
+                if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().taintedMessagePatch == false)
+                    return true;
+            }
+            
             Regex regex = new Regex(pattern);
 
             if (regex.Match(text).Length > 0) return false;

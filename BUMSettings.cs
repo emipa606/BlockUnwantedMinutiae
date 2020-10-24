@@ -6,13 +6,15 @@ namespace BlockUnwantedMinutiae
     public class BUMSettings : ModSettings
     {
         public bool taintedMessagePatch = true;
+        public bool apparelMessagePatch = true;
         public bool idleColonistsPatch = true;
         public bool drawAutoSelectCheckboxPatch = true;
-        public bool roofCollapsePatch = false; // defaulting to false since it only has specific uses
+        public bool roofCollapsePatch = true;
 
         public override void ExposeData()
         {
             Scribe_Values.Look(ref taintedMessagePatch, "taintedMessagePatch");
+            Scribe_Values.Look(ref apparelMessagePatch, "apparelMessagePatch");
             Scribe_Values.Look(ref idleColonistsPatch, "idleColonistsPatch");
             Scribe_Values.Look(ref drawAutoSelectCheckboxPatch, "drawAutoSelectCheckboxPatch");
             Scribe_Values.Look(ref roofCollapsePatch, "roofCollapsePatch");
@@ -34,6 +36,7 @@ namespace BlockUnwantedMinutiae
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(inRect);
             listingStandard.CheckboxLabeled("Disable the message for when tainted clothing deteriorates in a stockpile zone", ref settings.taintedMessagePatch);
+            listingStandard.CheckboxLabeled("Disable the message for when ANY clothing deteriorates in a stockpile zone", ref settings.apparelMessagePatch);
             listingStandard.CheckboxLabeled("Make the alert for idle pawns only appear for your own colonists, not guests", ref settings.idleColonistsPatch);
             listingStandard.CheckboxLabeled("Remove and disable the automatically add food to caravan check", ref settings.drawAutoSelectCheckboxPatch);
             listingStandard.CheckboxLabeled("Disable the letter that pops up when a roof collapses (default is false)", ref settings.roofCollapsePatch);
