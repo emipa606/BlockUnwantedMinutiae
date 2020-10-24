@@ -72,4 +72,19 @@ namespace BlockUnwantedMinutiae
             return false;
         }
     }
+
+    [HarmonyPatch(typeof(LetterStack))]
+    [HarmonyPatch("ReceiveLetter")]
+    [HarmonyPatch(new Type[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(LookTargets), typeof(Faction), typeof(Quest), typeof(List<ThingDef>), typeof(string)})]
+    static class RoofCollapsePatch
+    {
+        static bool Prefix(TaggedString label)
+        {
+            if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().taintedMessagePatch == false) return true;
+            
+            if (label == "LetterLabelRoofCollapsed".Translate()) return false;
+            
+            return true;
+        }
+    }
 }
