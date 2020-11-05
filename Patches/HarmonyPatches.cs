@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using HarmonyLib;
-using UnityEngine;
-using System.Text.RegularExpressions;
 using RimWorld;
 using Verse;
 
-namespace BlockUnwantedMinutiae
+namespace BlockUnwantedMinutiae.Patches
 {
     
     [StaticConstructorOnStartup]
@@ -18,33 +13,6 @@ namespace BlockUnwantedMinutiae
         static HarmonyPatches()
         {
             new Harmony("BlockUnwantedMinutiae").PatchAll();
-
-            
-        }
-    }
-
-    [HarmonyPatch(typeof(Messages))]
-    [HarmonyPatch("Message")]
-    [HarmonyPatch(new Type[] { typeof(string), typeof(LookTargets), typeof(MessageTypeDef), typeof(bool)})]
-    static class ApparelMessagePatch
-    {
-        static bool Prefix(string text)
-        {
-            string targetMsg = "MessageDeterioratedAway".Translate(""); // blank arg so we don't have {0}
-            string pattern = @".*\)\s*" + targetMsg;
-
-            if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().apparelMessagePatch == false)
-            {
-                pattern = @".*T\)\s*" + targetMsg;
-                if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().taintedMessagePatch == false)
-                    return true;
-            }
-            
-            Regex regex = new Regex(pattern);
-
-            if (regex.Match(text).Length > 0) return false;
-            
-            return true;
         }
     }
 

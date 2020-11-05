@@ -55,7 +55,8 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="BUMSettings.cs" />
-        <Compile Include="HarmonyPatches.cs" />
+        <Compile Include="Patches\HarmonyPatches.cs" />
+        <Compile Include="Patches\MessagePatches.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
