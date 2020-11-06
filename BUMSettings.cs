@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 using UnityEngine;
+using Verse.Sound;
 
 namespace BlockUnwantedMinutiae
 {
@@ -269,6 +271,17 @@ namespace BlockUnwantedMinutiae
 
             return activePatches;
         }
+
+        public void ChangePatchesState(ref bool[] patchValues, bool newState)
+        {
+            if (newState) SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera();
+            else SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera();
+            
+            for (int i = 0; i < patchValues.Length; i++)
+            {
+                patchValues[i] = newState;
+            }
+        }
     }
 
     public class BUMMod : Mod
@@ -282,15 +295,17 @@ namespace BlockUnwantedMinutiae
         }
         readonly BUMSettings settings;
         private static List<TabRecord> tabsList = new List<TabRecord>();
-        private Tab tab;
-        private Vector2 scrollPosition;
+        private Tab tab = Tab.Messages;
+        private Vector2 scrollPosition;// = new Vector2(0f, 0f);
         private static string searchText = "";
+        private static bool selectBool = false;
+        private static bool deselectBool = false;
 
         private const int LINE_MAX = 100;
 
         public BUMMod(ModContentPack content) : base(content)
         {
-            this.settings = GetSettings<BUMSettings>();
+            settings = GetSettings<BUMSettings>();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
@@ -316,9 +331,16 @@ namespace BlockUnwantedMinutiae
 
             Rect customRect = contentRect;
             Rect genericRect = contentRect;
-            genericRect.yMin += 80f;
+            genericRect.yMin += 85f;
+            Rect genericTitleRect = genericRect;
+            genericTitleRect.width -= 200f;
+            Rect genericBtnRect = genericRect;
+            genericBtnRect.width = 95f;
+            genericBtnRect.height = 25f;
+            genericBtnRect.x = genericTitleRect.x + genericTitleRect.width + 10f;
+            genericBtnRect.y += 29f;
             Rect genericViewRect = genericRect;
-            genericViewRect.yMin += 70f;
+            genericViewRect.yMin += 60f;
 
             Listing_Standard customList = new Listing_Standard();
             customList.Begin(customRect);
@@ -355,12 +377,19 @@ namespace BlockUnwantedMinutiae
             if (tab == Tab.Messages)
             {
                 Listing_Standard genericTitle = new Listing_Standard();
-                genericTitle.Begin(genericRect);
+                genericTitle.Begin(genericTitleRect);
                 Text.Font = GameFont.Medium;
                 genericTitle.Label("Generic Message Blockers");
                 Text.Font = GameFont.Small;
                 searchText = genericTitle.TextEntry(searchText);
                 genericTitle.End();
+
+                selectBool = Widgets.ButtonText(genericBtnRect, "Select All");
+                genericBtnRect.x += 105f;
+                deselectBool = Widgets.ButtonText(genericBtnRect, "Deselect All");
+
+                if (selectBool) settings.ChangePatchesState(ref settings.messagePatches_values, true);
+                if (deselectBool) settings.ChangePatchesState(ref settings.messagePatches_values, false);
 
                 Rect scrollRect = genericViewRect;
                 scrollRect.height = 26.1f * BUMSettings.messagePatches_labels.Count;
@@ -387,8 +416,7 @@ namespace BlockUnwantedMinutiae
                 listingStandard.End();
                 Widgets.EndScrollView();
             }
-
-
+            
             base.DoSettingsWindowContents(inRect);
         }
 
