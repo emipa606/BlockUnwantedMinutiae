@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <!-- RaidStrategies.xml -->
+    <LetterLabelRaidEnemy>Raid</LetterLabelRaidEnemy>
+    <LetterLabelRaidFriendly>Friendlies</LetterLabelRaidFriendly>
+
+    <!-- Incidents_Caravan_All.xml -->
+    <LetterLabelCaravanAmbush>Caravan ambushed</LetterLabelCaravanAmbush>
+    <LetterLabelCaravanManhunter>Caravan ambushed (manhunters)</LetterLabelCaravanManhunter>
+
+    <!-- Incidents_Map_Disease.xml -->
+    <LetterLabelDiseaseFlu>Disease: Flu</LetterLabelDiseaseFlu>
+    <LetterLabelDiseasePlague>Disease: Plague</LetterLabelDiseasePlague>
+    <LetterLabelDiseaseMalaria>Disease: Malaria</LetterLabelDiseaseMalaria>
+    <LetterLabelDiseaseSleeping>Disease: Sleeping sickness</LetterLabelDiseaseSleeping>
+    <LetterLabelDiseaseFibrous>Disease: Fibrous mechanites</LetterLabelDiseaseFibrous>
+    <LetterLabelDiseaseSensory>Disease: Sensory mechanites</LetterLabelDiseaseSensory>
+    <LetterLabelDiseaseGutWorms>Disease: Gut worms</LetterLabelDiseaseGutWorms>
+    <LetterLabelDiseaseMuscle>Disease: Muscle parasites</LetterLabelDiseaseMuscle>
+    <LetterLabelDiseaseAnimalFlu>Animal disease: Flu</LetterLabelDiseaseAnimalFlu>
+    <LetterLabelDiseaseAnimalPlague>Animal disease: Plague</LetterLabelDiseaseAnimalPlague>
+
+    <!-- Incidents_Map_Misc.xml -->
+    <LetterLabelAmbrosiaSprout>Ambrosia sprout</LetterLabelAmbrosiaSprout>
+    <LetterLabelWandererJoins>Wanderer joins: {PAWN_nameDef}</LetterLabelWandererJoins>
+    <LetterLabelRansom>Ransom demand</LetterLabelRansom>
+    <LetterLabelMeteorite>Meteorite</LetterLabelMeteorite>
+    <LetterLabelAnimalMigration>Animal migration: {0}</LetterLabelAnimalMigration>
+    <LetterLabelWanderer>{PAWN_kind} wanders in</LetterLabelWanderer>
+    <LetterLabelToxicFallout>Toxic fallout</LetterLabelToxicFallout>
+    <LetterLabelVolcanicWinter>Volcanic winter</LetterLabelVolcanicWinter>
+    <LetterLabelHeatWave>Heat wave</LetterLabelHeatWave>
+    <LetterLabelColdSnap>Cold snap</LetterLabelColdSnap>
+    <LetterLabelFlashstorm>Flashstorm</LetterLabelFlashstorm>
+
+    <!-- Incidents_Map_Special.xml -->
+    <LetterLabelManInBlack>Man in black</LetterLabelManInBlack>
+
+    <!-- Incidents_Map_Threats.xml -->
+    <LetterLabelInfestation>Infestation</LetterLabelInfestation>
+    <LetterLabelDrillInfestation>Too deep: Infestation</LetterLabelDrillInfestation>
+    <LetterLabelDefoliatorShip>Defoliator ship</LetterLabelDefoliatorShip>
+    <LetterLabelPsychicShip>Psychic ship</LetterLabelPsychicShip>
+    <LetterLabelMechCluster>Mechanoid cluster</LetterLabelMechCluster>
+
+    <!-- Incidents_World_Conditions.xml -->
+    <LetterLabelEclipse>Eclipse</LetterLabelEclipse>
+    <LetterLabelSolarFlare>Solar flare</LetterLabelSolarFlare>
+    <LetterLabelAurora>Aurora</LetterLabelAurora>
+
+    <!-- Incidents_World_Quests.xml -->
+    <LetterLabelQuestAvailable>Quest available</LetterLabelQuestAvailable>
+    <LetterLabelJourneyOffer>Journey offer</LetterLabelJourneyOffer>
+</LanguageData>

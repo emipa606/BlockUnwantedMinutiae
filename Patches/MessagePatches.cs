@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using HarmonyLib;
 using RimWorld;
@@ -7,30 +6,6 @@ using Verse;
 
 namespace BlockUnwantedMinutiae.Patches
 {
-    internal static class GenericMessagePatchHelper
-    {
-        internal static bool ContainsMessage(string text)
-        {
-            List<string> labels = LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().GetActiveMessagePatches();
-
-            foreach (string l in labels)
-            {
-                string targetMsg = ReplaceTags(l.Translate());
-                Regex regex = new Regex(@".*" + targetMsg);
-                
-                if (regex.Match(text).Length > 0) return false;
-            }
-            
-            return true;
-        }
-
-        private static string ReplaceTags(string text)
-        {
-            Regex regex = new Regex(@"{\S*}");
-            return regex.Replace(text, ".*");
-        }
-    }
-    
     [HarmonyPatch(typeof(Messages))]
     [HarmonyPatch("Message")]
     [HarmonyPatch(new Type[] { typeof(string), typeof(LookTargets), typeof(MessageTypeDef), typeof(Quest), typeof(bool)})]
@@ -38,7 +13,6 @@ namespace BlockUnwantedMinutiae.Patches
     {
         static bool Prefix(string text)
         {
-            Log.Message("GenericMessagePatch_1: " + text);
             return GenericMessagePatchHelper.ContainsMessage(text);
         }
     }
@@ -50,7 +24,6 @@ namespace BlockUnwantedMinutiae.Patches
     {
         static bool Prefix(string text)
         {
-            Log.Message("GenericMessagePatch_2: " + text);
             return GenericMessagePatchHelper.ContainsMessage(text);
         }
     }
@@ -62,7 +35,6 @@ namespace BlockUnwantedMinutiae.Patches
     {
         static bool Prefix(string text)
         {
-            Log.Message("GenericMessagePatch_3: " + text);
             return GenericMessagePatchHelper.ContainsMessage(text);
         }
     }
