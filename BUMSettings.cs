@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace BlockUnwantedMinutiae
 {
     public class BUMSettings : ModSettings
     {
-        public static IReadOnlyList<string> messagePatches_labels { get; } = new string[]
+        public static IReadOnlyList<string> genericMessage_labels { get; } = new string[]
         {
             // Messages.xml
             "MessageSiegersAssaulting",
@@ -237,8 +238,15 @@ namespace BlockUnwantedMinutiae
             "NoNonPrisonerBed",
             "NoAnimalBed"
         };
+
+        public static IReadOnlyList<string> genericAlert_labels { get; } = new string[]
+        {
+            "BreakRiskMinor",
+            "BreakRiskMajor",
+            "BreakRiskExtreme"
+        };
         
-        public static IReadOnlyList<string> letterPatches_labels { get; } = new string[]
+        public static IReadOnlyList<string> genericLetter_labels { get; } = new string[]
         {
             // Letters.xml
             "LetterLabelFirstSummerWarning",
@@ -384,8 +392,9 @@ namespace BlockUnwantedMinutiae
             "LetterLabelJourneyOffer"
         };
 
-        public bool[] messagePatches_values = new bool[messagePatches_labels.Count];
-        public bool[] letterPatches_values = new bool[letterPatches_labels.Count];
+        public bool[] genericMessage_values = new bool[genericMessage_labels.Count];
+        public bool[] genericAlert_values = new bool[genericAlert_labels.Count];
+        public bool[] genericLetter_values = new bool[genericLetter_labels.Count];
 
         public bool taintedMessagePatch = true;
         public bool idleColonistsPatch = true;
@@ -393,13 +402,17 @@ namespace BlockUnwantedMinutiae
 
         public override void ExposeData()
         {
-            for (int i = 0; i < messagePatches_labels.Count; i++)
+            for (int i = 0; i < genericMessage_labels.Count; i++)
             {
-                Scribe_Values.Look(ref messagePatches_values[i], messagePatches_labels[i]);
+                Scribe_Values.Look(ref genericMessage_values[i], genericMessage_labels[i]);
             }
-            for (int i = 0; i < letterPatches_labels.Count; i++)
+            for (int i = 0; i < genericAlert_labels.Count; i++)
             {
-                Scribe_Values.Look(ref letterPatches_values[i], letterPatches_labels[i]);
+                Scribe_Values.Look(ref genericAlert_values[i], genericAlert_labels[i]);
+            }
+            for (int i = 0; i < genericLetter_labels.Count; i++)
+            {
+                Scribe_Values.Look(ref genericLetter_values[i], genericLetter_labels[i]);
             }
 
             Scribe_Values.Look(ref taintedMessagePatch, "taintedMessagePatch");
@@ -408,28 +421,70 @@ namespace BlockUnwantedMinutiae
             base.ExposeData();
         }
 
-        public List<string> GetActiveMessagePatches()
+        public List<string> ActiveGenericMessagePatches()
         {
             List<string> activePatches = new List<string>();
 
-            for (int i = 0; i < messagePatches_labels.Count; i++)
+            for (int i = 0; i < genericMessage_labels.Count; i++)
             {
-                if (messagePatches_values[i]) activePatches.Add(messagePatches_labels[i]);
+                if (genericMessage_values[i]) activePatches.Add(genericMessage_labels[i]);
             }
 
             return activePatches;
         }
 
-        public List<string> GetActiveLetterPatches()
+        public List<string> ActiveGenericAlertPatches()
         {
             List<string> activePatches = new List<string>();
 
-            for (int i = 0; i < letterPatches_labels.Count; i++)
+            for (int i = 0; i < genericAlert_labels.Count; i++)
             {
-                if (letterPatches_values[i]) activePatches.Add(letterPatches_labels[i]);
+                if (genericAlert_values[i]) activePatches.Add(genericAlert_labels[i]);
             }
 
             return activePatches;
+        }
+
+        public List<string> ActiveGenericLetterPatches()
+        {
+            List<string> activePatches = new List<string>();
+
+            for (int i = 0; i < genericLetter_labels.Count; i++)
+            {
+                if (genericLetter_values[i]) activePatches.Add(genericLetter_labels[i]);
+            }
+
+            return activePatches;
+        }
+
+        public bool GetGenericMessagePatchValue(string label)
+        {
+            for (int i = 0; i < genericMessage_labels.Count; i++)
+            {
+                if (genericMessage_labels[i] == label) return genericMessage_values[i];
+            }
+
+            throw new ArgumentException("Argument " + label + " not found in the list.");
+        }
+
+        public bool GetGenericAlertPatchValue(string label)
+        {
+            for (int i = 0; i < genericAlert_labels.Count; i++)
+            {
+                if (genericAlert_labels[i] == label) return genericAlert_values[i];
+            }
+
+            throw new ArgumentException("Argument " + label + " not found in the list.");
+        }
+
+        public bool GetGenericLetterPatchValue(string label)
+        {
+            for (int i = 0; i < genericLetter_labels.Count; i++)
+            {
+                if (genericLetter_labels[i] == label) return genericLetter_values[i];
+            }
+
+            throw new ArgumentException("Argument " + label + " not found in the list.");
         }
     }
 
@@ -520,7 +575,7 @@ namespace BlockUnwantedMinutiae
             customList.GapLine();
             customList.End();
 
-            if ((tab == Tab.Messages) || (tab == Tab.Letters))
+            if ((tab == Tab.Messages) || (tab == Tab.Alerts) || (tab == Tab.Letters))
             {
                 Listing_Standard genericTitle = new Listing_Standard();
                 genericTitle.Begin(genericTitleRect);
@@ -529,6 +584,9 @@ namespace BlockUnwantedMinutiae
                 {
                     case Tab.Messages:
                         genericTitle.Label("Generic Message Blockers");
+                        break;
+                    case Tab.Alerts:
+                        genericTitle.Label("Generic Alert Blockers");
                         break;
                     case Tab.Letters:
                         genericTitle.Label("Generic Letter Blockers");
@@ -546,10 +604,13 @@ namespace BlockUnwantedMinutiae
                 switch (tab)
                 {
                     case Tab.Messages:
-                        scrollRect.height = 26.1f * BUMSettings.messagePatches_labels.Count;
+                        scrollRect.height = 26.1f * BUMSettings.genericMessage_labels.Count;
+                        break;
+                    case Tab.Alerts:
+                        scrollRect.height = 26.1f * BUMSettings.genericAlert_labels.Count;
                         break;
                     case Tab.Letters:
-                        scrollRect.height = 26.1f * BUMSettings.letterPatches_labels.Count;
+                        scrollRect.height = 26.1f * BUMSettings.genericLetter_labels.Count;
                         break;
                 }
                 scrollRect.width = genericViewRect.width - 20f;
@@ -564,27 +625,39 @@ namespace BlockUnwantedMinutiae
                 switch (tab)
                 {
                     case Tab.Messages:
-                        for (int i = 0; i < BUMSettings.messagePatches_labels.Count; i++)
+                        for (int i = 0; i < BUMSettings.genericMessage_labels.Count; i++)
                         {
-                            string label = BUMSettings.messagePatches_labels[i];
+                            string label = BUMSettings.genericMessage_labels[i];
                             string message = label + " - " + label.Translate();
 
                             if (searchOn && !message.ToLower().Contains(searchText.ToLower())) continue;
                             if (message.Length > LINE_MAX) message = (message.Substring(0, LINE_MAX) + "...");
 
-                            listingStandard.CheckboxLabeled(message, ref settings.messagePatches_values[i]);
+                            listingStandard.CheckboxLabeled(message, ref settings.genericMessage_values[i]);
+                        }
+                        break;
+                    case Tab.Alerts:
+                        for (int i = 0; i < BUMSettings.genericAlert_labels.Count; i++)
+                        {
+                            string label = BUMSettings.genericAlert_labels[i];
+                            string message = label + " - " + label.Translate();
+
+                            if (searchOn && !message.ToLower().Contains(searchText.ToLower())) continue;
+                            if (message.Length > LINE_MAX) message = (message.Substring(0, LINE_MAX) + "...");
+
+                            listingStandard.CheckboxLabeled(message, ref settings.genericAlert_values[i]);
                         }
                         break;
                     case Tab.Letters:
-                        for (int i = 0; i < BUMSettings.letterPatches_labels.Count; i++)
+                        for (int i = 0; i < BUMSettings.genericLetter_labels.Count; i++)
                         {
-                            string label = BUMSettings.letterPatches_labels[i];
+                            string label = BUMSettings.genericLetter_labels[i];
                             string message = label + " - " + label.Translate();
 
                             if (searchOn && !message.ToLower().Contains(searchText.ToLower())) continue;
                             if (message.Length > LINE_MAX) message = (message.Substring(0, LINE_MAX) + "...");
 
-                            listingStandard.CheckboxLabeled(message, ref settings.letterPatches_values[i]);
+                            listingStandard.CheckboxLabeled(message, ref settings.genericLetter_values[i]);
                         }
                         break;
                 }
@@ -609,12 +682,12 @@ namespace BlockUnwantedMinutiae
             switch (tab)
             {
                 case Tab.Messages:
-                    for (int i = 0; i < settings.messagePatches_values.Length; i++)
-                        settings.messagePatches_values[i] = newState;
+                    for (int i = 0; i < settings.genericMessage_values.Length; i++)
+                        settings.genericMessage_values[i] = newState;
                     break;
                 case Tab.Letters:
-                    for (int i = 0; i < settings.letterPatches_values.Length; i++)
-                        settings.letterPatches_values[i] = newState;
+                    for (int i = 0; i < settings.genericLetter_values.Length; i++)
+                        settings.genericLetter_values[i] = newState;
                     break;
             }
         }

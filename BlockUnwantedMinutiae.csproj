@@ -55,6 +55,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="BUMSettings.cs" />
+        <Compile Include="Patches\AlertPatches.cs" />
         <Compile Include="Patches\HarmonyPatches.cs" />
         <Compile Include="Patches\LetterPatches.cs" />
         <Compile Include="Patches\MessagePatches.cs" />

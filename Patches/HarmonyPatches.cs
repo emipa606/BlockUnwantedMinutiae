@@ -10,7 +10,7 @@ namespace BlockUnwantedMinutiae.Patches
     {
         internal static bool ContainsMessage(string text)
         {
-            List<string> labels = LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().GetActiveMessagePatches();
+            List<string> labels = LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().ActiveGenericMessagePatches();
 
             foreach (string l in labels)
             {
@@ -25,7 +25,7 @@ namespace BlockUnwantedMinutiae.Patches
         
         internal static bool ContainsLetter(string text)
         {
-            List<string> labels = LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().GetActiveLetterPatches();
+            List<string> labels = LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().ActiveGenericLetterPatches();
 
             foreach (string l in labels)
             {
@@ -51,24 +51,6 @@ namespace BlockUnwantedMinutiae.Patches
         static HarmonyPatches()
         {
             new Harmony("BlockUnwantedMinutiae").PatchAll();
-        }
-    }
-
-    [HarmonyPatch(typeof(Alert_ColonistsIdle))]
-    [HarmonyPatch("IdleColonists", MethodType.Getter)]
-    static class IdleColonistsPatch
-    {
-        static void Postfix(ref List<Pawn> __result)
-        {
-            if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().idleColonistsPatch == false) return;
-            
-            List<Pawn> nonGuests = new List<Pawn>();
-            foreach (Pawn pawn in __result)
-            {
-                if (!pawn.IsQuestLodger()) nonGuests.Add(pawn);
-            }
-            
-            __result = nonGuests;
         }
     }
 
