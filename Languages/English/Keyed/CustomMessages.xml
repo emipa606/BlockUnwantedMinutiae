@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <!-- Inspirations.xml -->
+    <MessageEndedInspireWorkFrenzy>{0} is no longer inspired (work frenzy).</MessageEndedInspireWorkFrenzy>
+    <MessageEndedInspireGoFrenzy>{0} is no longer inspired (go frenzy).</MessageEndedInspireGoFrenzy>
+    <MessageEndedInspireShootFrenzy>{0} is no longer inspired (shoot frenzy).</MessageEndedInspireShootFrenzy>
+    <MessageEndedInspireTrade>{0} is no longer inspired (inspired trade).</MessageEndedInspireTrade>
+    <MessageEndedInspireRecruitment>{0} is no longer inspired (inspired recruitment).</MessageEndedInspireRecruitment>
+    <MessageEndedInspireTaming>{0} is no longer inspired (inspired taming).</MessageEndedInspireTaming>
+    <MessageEndedInspireSurgery>{0} is no longer inspired (inspired surgery).</MessageEndedInspireSurgery>
+    <MessageEndedInspireCreativity>{0} is no longer inspired (inspired creativity).</MessageEndedInspireCreativity>
+</LanguageData>

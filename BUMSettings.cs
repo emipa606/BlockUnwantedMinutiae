@@ -236,7 +236,16 @@ namespace BlockUnwantedMinutiae
             // FloatMenu.xml
             "NoPrisonerBed",
             "NoNonPrisonerBed",
-            "NoAnimalBed"
+            "NoAnimalBed",
+            // Inspirations.xml
+            "MessageEndedInspireWorkFrenzy",
+            "MessageEndedInspireGoFrenzy",
+            "MessageEndedInspireShootFrenzy",
+            "MessageEndedInspireTrade",
+            "MessageEndedInspireRecruitment",
+            "MessageEndedInspireTaming",
+            "MessageEndedInspireSurgery",
+            "MessageEndedInspireCreativity"
         };
 
         public static IReadOnlyList<string> genericAlert_labels { get; } = new string[]
@@ -389,7 +398,16 @@ namespace BlockUnwantedMinutiae
             "LetterLabelAurora",
             // Incidents_World_Quests.xml
             "LetterLabelQuestAvailable",
-            "LetterLabelJourneyOffer"
+            "LetterLabelJourneyOffer",
+            // Inspirations.xml
+            "LetterLabelInspiredWorkFrenzy",
+            "LetterLabelInspiredGoFrenzy",
+            "LetterLabelInspiredShootFrenzy",
+            "LetterLabelInspiredTrade",
+            "LetterLabelInspiredRecruitment",
+            "LetterLabelInspiredTaming",
+            "LetterLabelInspiredSurgery",
+            "LetterLabelInspiredCreativity"
         };
 
         public bool[] genericMessage_values = new bool[genericMessage_labels.Count];

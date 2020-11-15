@@ -51,4 +51,14 @@
     <!-- Incidents_World_Quests.xml -->
     <LetterLabelQuestAvailable>Quest available</LetterLabelQuestAvailable>
     <LetterLabelJourneyOffer>Journey offer</LetterLabelJourneyOffer>
+    
+    <!-- Inspirations.xml -->
+    <LetterLabelInspiredWorkFrenzy>Work frenzy: {0}</LetterLabelInspiredWorkFrenzy>
+    <LetterLabelInspiredGoFrenzy>Go frenzy: {0}</LetterLabelInspiredGoFrenzy>
+    <LetterLabelInspiredShootFrenzy>Shoot frenzy: {0}</LetterLabelInspiredShootFrenzy>
+    <LetterLabelInspiredTrade>Inspired trade: {0}</LetterLabelInspiredTrade>
+    <LetterLabelInspiredRecruitment>Inspired recruitment: {0}</LetterLabelInspiredRecruitment>
+    <LetterLabelInspiredTaming>Inspired taming: {0}</LetterLabelInspiredTaming>
+    <LetterLabelInspiredSurgery>Inspired surgery: {0}</LetterLabelInspiredSurgery>
+    <LetterLabelInspiredCreativity>Inspired creativity: {0}</LetterLabelInspiredCreativity>
 </LanguageData>
