@@ -56,4 +56,16 @@ namespace BlockUnwantedMinutiae.Patches
                 __result = new List<Pawn>();
         }
     }
+
+    [HarmonyPatch(typeof(Alert_NeedResearchProject))]
+    [HarmonyPatch("GetReport")]
+    static class NeedResearchProjectPatch
+    {
+        static bool Prefix()
+        {
+            if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().GetGenericAlertPatchValue("NeedResearchProject"))
+                return false;
+            return true;
+        }
+    }
 }

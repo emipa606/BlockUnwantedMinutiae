@@ -252,7 +252,8 @@ namespace BlockUnwantedMinutiae
         {
             "BreakRiskMinor",
             "BreakRiskMajor",
-            "BreakRiskExtreme"
+            "BreakRiskExtreme",
+            "NeedResearchProject"
         };
         
         public static IReadOnlyList<string> genericLetter_labels { get; } = new string[]
