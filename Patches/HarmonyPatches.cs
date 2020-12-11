@@ -54,8 +54,7 @@ namespace BlockUnwantedMinutiae.Patches
         }
     }
 
-    [HarmonyPatch(typeof(Dialog_FormCaravan))]
-    [HarmonyPatch("DrawAutoSelectCheckbox")]
+    [HarmonyPatch(typeof(Dialog_FormCaravan), nameof(Dialog_FormCaravan.DrawAutoSelectCheckbox))]
     static class DrawAutoSelectCheckboxPatch
     {
         static bool Prefix(Dialog_FormCaravan __instance)

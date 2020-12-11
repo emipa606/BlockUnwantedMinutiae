@@ -6,8 +6,7 @@ using Verse;
 
 namespace BlockUnwantedMinutiae.Patches
 {
-    [HarmonyPatch(typeof(LetterStack))]
-    [HarmonyPatch("ReceiveLetter")]
+    [HarmonyPatch(typeof(LetterStack), nameof(LetterStack.ReceiveLetter))]
     [HarmonyPatch(new Type[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(LookTargets), typeof(Faction), typeof(Quest), typeof(List<ThingDef>), typeof(string)})]
     static class GenericLetterPatch_1
     {
@@ -17,8 +16,7 @@ namespace BlockUnwantedMinutiae.Patches
         }
     }
     
-    [HarmonyPatch(typeof(LetterStack))]
-    [HarmonyPatch("ReceiveLetter")]
+    [HarmonyPatch(typeof(LetterStack), nameof(LetterStack.ReceiveLetter))]
     [HarmonyPatch(new Type[] { typeof(string), typeof(string), typeof(LetterDef), typeof(string)})]
     static class GenericLetterPatch_2
     {
@@ -28,8 +26,7 @@ namespace BlockUnwantedMinutiae.Patches
         }
     }
     
-    [HarmonyPatch(typeof(LetterStack))]
-    [HarmonyPatch("ReceiveLetter")]
+    [HarmonyPatch(typeof(LetterStack), nameof(LetterStack.ReceiveLetter))]
     [HarmonyPatch(new Type[] { typeof(Letter), typeof(string)})]
     static class GenericLetterPatch_3
     {

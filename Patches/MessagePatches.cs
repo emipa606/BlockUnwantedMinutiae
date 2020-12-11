@@ -6,8 +6,7 @@ using Verse;
 
 namespace BlockUnwantedMinutiae.Patches
 {
-    [HarmonyPatch(typeof(Messages))]
-    [HarmonyPatch("Message")]
+    [HarmonyPatch(typeof(Messages), nameof(Messages.Message))]
     [HarmonyPatch(new Type[] { typeof(string), typeof(LookTargets), typeof(MessageTypeDef), typeof(Quest), typeof(bool)})]
     static class GenericMessagePatch_1
     {
@@ -17,8 +16,7 @@ namespace BlockUnwantedMinutiae.Patches
         }
     }
     
-    [HarmonyPatch(typeof(Messages))]
-    [HarmonyPatch("Message")]
+    [HarmonyPatch(typeof(Messages), nameof(Messages.Message))]
     [HarmonyPatch(new Type[] { typeof(string), typeof(LookTargets), typeof(MessageTypeDef), typeof(bool)})]
     static class GenericMessagePatch_2
     {
@@ -28,8 +26,7 @@ namespace BlockUnwantedMinutiae.Patches
         }
     }
     
-    [HarmonyPatch(typeof(Messages))]
-    [HarmonyPatch("Message")]
+    [HarmonyPatch(typeof(Messages), nameof(Messages.Message))]
     [HarmonyPatch(new Type[] { typeof(string), typeof(MessageTypeDef), typeof(bool)})]
     static class GenericMessagePatch_3
     {
@@ -39,9 +36,8 @@ namespace BlockUnwantedMinutiae.Patches
         }
     }
 
-    [HarmonyAfter("GenericMessagePatch_2")]
-    [HarmonyPatch(typeof(Messages))]
-    [HarmonyPatch("Message")]
+    [HarmonyAfter(nameof(GenericMessagePatch_2))]
+    [HarmonyPatch(typeof(Messages), nameof(Messages.Message))]
     [HarmonyPatch(new Type[] { typeof(string), typeof(LookTargets), typeof(MessageTypeDef), typeof(bool)})]
     static class TaintedMessagePatch
     {

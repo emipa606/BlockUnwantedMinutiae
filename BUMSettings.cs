@@ -253,7 +253,60 @@ namespace BlockUnwantedMinutiae
             "BreakRiskMinor",
             "BreakRiskMajor",
             "BreakRiskExtreme",
-            "NeedResearchProject"
+            "AlertTatteredApparel",
+            "AlertUnhappyNudity",
+            "ActivatorCountdown",
+            "PatientsAwaitingMedicalOperation",
+            "BestowerWaitingAlert",
+            "BilliardsNeedsSpace",
+            "Boredom",
+            "BrawlerHasRangedWeapon",
+            "BuildingCantBeUsedRoofed",
+            "CaravanIdle",
+            "AlertColonistLeftUnburied",
+            "ColonistNeedsRescue",
+            "ColonistNeedsTreatment",
+            "ColonistsIdle",
+            "DisallowedBuildingInsideMonument",
+            "Exhaustion",
+            "FireInHomeArea",
+            "AlertHeatstroke",
+            "HunterHasShieldAndRangedWeapon",
+            "HunterLacksWeapon",
+            "AlertHypothermia",
+            "ImmobileCaravan",
+            "PawnsWithLifeThreateningDisease",
+            "LowFood",
+            "LowMedicine",
+            "MonumentMarkerMissingBlueprints",
+            "NeedBatteries",
+            "NeedColonistBeds",
+            "NeedDefenses",
+            "NeedDoctor",
+            "NeedJoySource",
+            "NeedMealSource",
+            "NeedMeditationSpotAlert",
+            "NeedMiner",
+            "NeedResearchProject",
+            "NeedWarden",
+            "NeedWarmClothes",
+            "NeedFoodHopper",
+            "PermitChoiceReadyAlert",
+            "QuestExpiresSoon",
+            "RoyalNoAcceptableFood",
+            "NeedThroneAssigned",
+            "ShieldUserHasRangedWeapon",
+            "ShipLandingBeaconUnusable",
+            "StarvationAnimals",
+            "Starvation",
+            "ThroneroomInvalidConfiguration",
+            "NeedBedroomAssigned",
+            "UndignifiedBedroom",
+            "UndignifiedThroneroom",
+            "UnusableMeditationFocusAlert",
+            "QuestPartMoodBelowThreshold",
+            "QuestPartShuttleArriveDelay",
+            "QuestPartShuttleLeaveDelay"
         };
         
         public static IReadOnlyList<string> genericLetter_labels { get; } = new string[]
@@ -703,6 +756,10 @@ namespace BlockUnwantedMinutiae
                 case Tab.Messages:
                     for (int i = 0; i < settings.genericMessage_values.Length; i++)
                         settings.genericMessage_values[i] = newState;
+                    break;
+                case Tab.Alerts:
+                    for (int i = 0; i < settings.genericAlert_values.Length; i++)
+                        settings.genericAlert_values[i] = newState;
                     break;
                 case Tab.Letters:
                     for (int i = 0; i < settings.genericLetter_values.Length; i++)
