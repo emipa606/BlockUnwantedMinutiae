@@ -65,4 +65,15 @@ namespace BlockUnwantedMinutiae.Patches
             return false;
         }
     }
+
+    [HarmonyPatch(typeof(Dialog_FormCaravan), nameof(Dialog_FormCaravan.PostOpen))]
+    static class PostOpenPatch
+    {
+        static bool Prefix(Dialog_FormCaravan __instance)
+        {
+            if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().drawAutoSelectCheckboxPatch == true)
+                Traverse.Create(__instance).Field("autoSelectFoodAndMedicine").SetValue(false);
+            return true;
+        }
+    }
 }
