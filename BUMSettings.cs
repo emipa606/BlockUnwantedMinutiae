@@ -245,7 +245,10 @@ namespace BlockUnwantedMinutiae
             "MessageEndedInspireRecruitment",
             "MessageEndedInspireTaming",
             "MessageEndedInspireSurgery",
-            "MessageEndedInspireCreativity"
+            "MessageEndedInspireCreativity",
+            // Hediffs_Global_Misc.xml
+            "MessagePregnant",
+            "MessageOverdose"
         };
 
         public static IReadOnlyList<string> genericAlert_labels { get; } = new string[]

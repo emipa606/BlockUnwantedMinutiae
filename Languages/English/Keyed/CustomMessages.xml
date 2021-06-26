@@ -9,4 +9,8 @@
     <MessageEndedInspireTaming>{0} is no longer inspired (inspired taming).</MessageEndedInspireTaming>
     <MessageEndedInspireSurgery>{0} is no longer inspired (inspired surgery).</MessageEndedInspireSurgery>
     <MessageEndedInspireCreativity>{0} is no longer inspired (inspired creativity).</MessageEndedInspireCreativity>
+
+    <!-- Hediffs_Global_Misc.xml -->
+    <MessagePregnant>{0} is pregnant!</MessagePregnant>
+    <MessageOverdose>{0} is overdosing!</MessageOverdose>
 </LanguageData>
