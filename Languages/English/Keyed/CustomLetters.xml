@@ -61,4 +61,8 @@
     <LetterLabelInspiredTaming>Inspired taming: {0}</LetterLabelInspiredTaming>
     <LetterLabelInspiredSurgery>Inspired surgery: {0}</LetterLabelInspiredSurgery>
     <LetterLabelInspiredCreativity>Inspired creativity: {0}</LetterLabelInspiredCreativity>
+    
+    <!-- Hediffs_Global_Misc.xml -->
+    <LetterLabelPregnant>{0} pregnant</LetterLabelPregnant>
+    <LetterLabelOverdose>Overdose: {0}</LetterLabelOverdose>
 </LanguageData>

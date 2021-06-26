@@ -461,7 +461,10 @@ namespace BlockUnwantedMinutiae
             "LetterLabelInspiredRecruitment",
             "LetterLabelInspiredTaming",
             "LetterLabelInspiredSurgery",
-            "LetterLabelInspiredCreativity"
+            "LetterLabelInspiredCreativity",
+            // Hediffs_Global_Misc.xml
+            "LetterLabelPregnant",
+            "LetterLabelOverdose"
         };
 
         public bool[] genericMessage_values = new bool[genericMessage_labels.Count];
