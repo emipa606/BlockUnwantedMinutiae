@@ -43,11 +43,6 @@
     <LetterLabelPsychicShip>Psychic ship</LetterLabelPsychicShip>
     <LetterLabelMechCluster>Mechanoid cluster</LetterLabelMechCluster>
 
-    <!-- Incidents_World_Conditions.xml -->
-    <LetterLabelEclipse>Eclipse</LetterLabelEclipse>
-    <LetterLabelSolarFlare>Solar flare</LetterLabelSolarFlare>
-    <LetterLabelAurora>Aurora</LetterLabelAurora>
-
     <!-- Incidents_World_Quests.xml -->
     <LetterLabelQuestAvailable>Quest available</LetterLabelQuestAvailable>
     <LetterLabelJourneyOffer>Journey offer</LetterLabelJourneyOffer>
@@ -65,4 +60,16 @@
     <!-- Hediffs_Global_Misc.xml -->
     <LetterLabelPregnant>{0} pregnant</LetterLabelPregnant>
     <LetterLabelOverdose>Overdose: {0}</LetterLabelOverdose>
+    
+    <!-- GameConditions_Misc.xml -->
+    <LetterLabelSolarFlare>Solar flare</LetterLabelSolarFlare>
+    <LetterLabelEclipse>Eclipse</LetterLabelEclipse>
+    <LetterLabelPsychicDrone>Psychic drone: {0}</LetterLabelPsychicDrone>
+    <LetterLabelPsychicSoothe>Psychic soothe: {0}</LetterLabelPsychicSoothe>
+    <LetterLabelToxicFallout>Toxic fallout</LetterLabelToxicFallout>
+    <LetterLabelVolcanicWinter>Volcanic winter</LetterLabelVolcanicWinter>
+    <LetterLabelHeatWave>Heat wave</LetterLabelHeatWave>
+    <LetterLabelColdSnap>Cold snap</LetterLabelColdSnap>
+    <LetterLabelFlashstorm>Flashstorm</LetterLabelFlashstorm>
+    <LetterLabelAurora>Aurora</LetterLabelAurora>
 </LanguageData>

@@ -248,7 +248,18 @@ namespace BlockUnwantedMinutiae
             "MessageEndedInspireCreativity",
             // Hediffs_Global_Misc.xml
             "MessagePregnant",
-            "MessageOverdose"
+            "MessageOverdose",
+            // GameConditions_Misc.xml
+            "MessageSolarFlare",
+            "MessageEclipse",
+            "MessagePsychicDrone",
+            "MessagePsychicSoothe",
+            "MessageToxicFallout",
+            "MessageVolcanicWinter",
+            "MessageHeatWave",
+            "MessageColdSnap",
+            "MessageFlashstorm",
+            "MessageAurora"
         };
 
         public static IReadOnlyList<string> genericAlert_labels { get; } = new string[]
@@ -467,7 +478,20 @@ namespace BlockUnwantedMinutiae
             "LetterLabelInspiredCreativity",
             // Hediffs_Global_Misc.xml
             "LetterLabelPregnant",
-            "LetterLabelOverdose"
+            "LetterLabelOverdose",
+            // GameConditions_Misc.xml
+            "LetterLabelSolarFlare",
+            "LetterLabelEclipse",
+            "LetterLabelPsychicDrone",
+            "LetterLabelPsychicSoothe",
+            "LetterLabelToxicFallout",
+            "LetterLabelVolcanicWinter",
+            "LetterLabelHeatWave",
+            "LetterLabelColdSnap",
+            "LetterLabelFlashstorm",
+            "LetterLabelClimateCycle",
+            "LetterLabelPlanetkiller",
+            "LetterLabelAurora"
         };
 
         public bool[] genericMessage_values = new bool[genericMessage_labels.Count];
