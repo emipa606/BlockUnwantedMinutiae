@@ -17,12 +17,12 @@ namespace BlockUnwantedMinutiae.Patches
     }
     
     [HarmonyPatch(typeof(LetterStack), nameof(LetterStack.ReceiveLetter))]
-    [HarmonyPatch(new Type[] { typeof(string), typeof(string), typeof(LetterDef), typeof(string)})]
+    [HarmonyPatch(new Type[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(string)})]
     static class GenericLetterPatch_2
     {
-        static bool Prefix(string label)
+        static bool Prefix(TaggedString label)
         {
-            return GenericMessagePatchHelper.ContainsLetter(label);
+            return GenericMessagePatchHelper.ContainsLetter(label.ToString());
         }
     }
     
