@@ -61,7 +61,7 @@ namespace BlockUnwantedMinutiae.Patches
         {
             if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().drawAutoSelectCheckboxPatch == false) return true;
             
-            Traverse.Create(__instance).Field("autoSelectFoodAndMedicine").SetValue(false);
+            Traverse.Create(__instance).Field("autoSelectTravelSupplies").SetValue(false);
             return false;
         }
     }
@@ -72,7 +72,7 @@ namespace BlockUnwantedMinutiae.Patches
         static bool Prefix(Dialog_FormCaravan __instance)
         {
             if (LoadedModManager.GetMod<BUMMod>().GetSettings<BUMSettings>().drawAutoSelectCheckboxPatch == true)
-                Traverse.Create(__instance).Field("autoSelectFoodAndMedicine").SetValue(false);
+                Traverse.Create(__instance).Field("autoSelectTravelSupplies").SetValue(false);
             return true;
         }
     }
