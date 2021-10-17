@@ -72,4 +72,11 @@
     <LetterLabelColdSnap>Cold snap</LetterLabelColdSnap>
     <LetterLabelFlashstorm>Flashstorm</LetterLabelFlashstorm>
     <LetterLabelAurora>Aurora</LetterLabelAurora>
+
+    <!-- NEW IN IDEOLOGY EXPANSION -->
+
+    <!-- Incidents_Map_Special.xml-->
+    <LetterLabelGauranlenPodSpawn>Gauranlen pod sprout</LetterLabelGauranlenPodSpawn>
+    <LetterLabelInfestationJelly>Insect jelly</LetterLabelInfestationJelly>
+    <LetterLabelWanderersSkylantern>Friendly visitors</LetterLabelWanderersSkylantern>
 </LanguageData>

@@ -25,4 +25,25 @@
     <MessageColdSnap>The cold snap is over.</MessageColdSnap>
     <MessageFlashstorm>The flashstorm is over.</MessageFlashstorm>
     <MessageAurora>The aurora is ending.</MessageAurora>
+    
+    <!-- NEW IN IDEOLOGY EXPANSION -->
+    
+    <!-- Abilities.xml-->
+    <MessageConvertSuccess>{0} has converted {1} to {2}.</MessageConvertSuccess>
+    <MessageConvertFailure>{0} failed to convert {1}. {2} was upset by the attempt, but {3} certainty fell from {4} to {5}.</MessageConvertFailure>
+    <MessageReassureSuccess>{0} successfully counselled {1}, canceling the mood impact of {2}.</MessageReassureSuccess>
+    <MessageCounselSuccess>{0} has reassured {1}, increasing {2} certainty in {3} from {4} to {5}.</MessageCounselSuccess>
+    <MessageCounselSuccessNoNeg>{0} successfully counselled {1}, increasing {2} mood by {3}.</MessageCounselSuccessNoNeg>
+    <MessageCounselFailure>{0} botched the attempt to counsel {1}. {2} has become upset.</MessageCounselFailure>
+    <MessageAnimalCalmSuccess>{0} successfully calmed {1}.</MessageAnimalCalmSuccess>
+
+    <!-- Script_ReliquaryPilgrims.xml -->
+    <PilgrimsLeavingMessage>{0} finished venerating {1} and {2} now leaving.</PilgrimsLeavingMessage>
+    <PilgrimsLeftMessage>{0} left the map.</PilgrimsLeftMessage>
+    <TerminalHackedMessage>Terminal hacked. You've collected the information and can now leave.</TerminalHackedMessage>
+    <TerminalHackedMultiMessage>Terminal hacked. {0} / {1} complete.</TerminalHackedMultiMessage>
+    <AllTerminalsHackedMessage>You've hacked all of the terminals and discovered secret information about {0}! You can now leave.</AllTerminalsHackedMessage>
+
+    <!-- Ritual_Behaviors.xml -->
+    <RitualStageActionMessage>{0}: The speech is over, and the party is beginning.</RitualStageActionMessage>
 </LanguageData>
