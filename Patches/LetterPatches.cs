@@ -32,7 +32,7 @@ namespace BlockUnwantedMinutiae.Patches
     {
         static bool Prefix(Letter let)
         {
-            return GenericMessagePatchHelper.ContainsLetter(let.label.ToString());
+            return GenericMessagePatchHelper.ContainsLetter(let.Label.ToString());
         }
     }
 }
