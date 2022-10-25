@@ -7,6 +7,7 @@
     <!-- Hediffs_Global_Misc.xml -->
     <LetterLabelPregnant>{0} pregnant</LetterLabelPregnant>
     <LetterLabelOverdose>Overdose: {0}</LetterLabelOverdose>
+    <LetterLabelCatatonicBreakdown>Catatonic breakdown: {0}</LetterLabelCatatonicBreakdown>
     <!-- HediffGiverSets.xml -->
     <LetterLabelSavant>Trauma savant</LetterLabelSavant>
     <!-- Inspirations.xml -->
@@ -107,6 +108,8 @@
     <LetterLabelQuestFailedReason>Quest failed</LetterLabelQuestFailedReason>
     <!-- Messages.xml -->
     <LetterLabelMessageRecruitSuccess>New recruit</LetterLabelMessageRecruitSuccess>
+    <!-- Thoughts_Memory_Misc.xml -->
+    <LetterLabelCatharsis>Catharsis: {0}</LetterLabelCatharsis>
 
     <!-- ROYALTY -->
     <!-- Gatherings.xml -->
