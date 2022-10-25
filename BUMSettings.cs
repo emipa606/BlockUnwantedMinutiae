@@ -941,7 +941,7 @@ namespace BlockUnwantedMinutiae
             "LetterLabelMessageRecruitSuccess",
             // ROYALTY
             // Gatherings.xml
-            "LetterLabelConcert>",
+            "LetterLabelConcert",
             // Incidents_Map_Special.xml
             "LetterLabelAnimaTree",
             // QuestScriptDefs
