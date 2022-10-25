@@ -120,14 +120,14 @@
     <MessageAdultsGauranlen>Only adults can connect to the Gauranlen tree.</MessageAdultsGauranlen>
     <RitualStageActionMessage>{0}: The speech is over, and the party is beginning.</RitualStageActionMessage>
     <!-- Misc_Gameplay.xml -->
-    <BiosculpterEnteringMessage>{PAWN_labelShort} will enter biosculpter and begin a {CYCLE} cycle.</BiosculpterEnteringMessage>
-    <BiosculpterLoadingStartedMessage>{PAWN_labelShort} will collect {INGREDIENTS}, and begin a {CYCLE} cycle.</BiosculpterLoadingStartedMessage>
-    <BiosculpterCarryStartedMessage>{PAWN_labelShort} will collect {INGREDIENTS}, place {DOWNED_labelShort} inside the biosculpter, and begin a {CYCLE} cycle.</BiosculpterCarryStartedMessage>
-    <BiosculpterNoPowerEjectedMessage>{PAWN_labelShort} was ejected from a biosculpter pod due to lack of power.</BiosculpterNoPowerEjectedMessage>
-    <BiosculpterHealCompletedMessage>{PAWN_labelShort} completed healing cycle.</BiosculpterHealCompletedMessage>
-    <BiosculpterHealCompletedWithCureMessage>{PAWN_labelShort} completed healing cycle, and {PAWN_possessive} {HEDIFF_label} was cured.</BiosculpterHealCompletedWithCureMessage>
-    <BiosculpterAgeReversalCompletedMessage>{PAWN_labelShort} completed {PAWN_possessive} age reversal cycle.</BiosculpterAgeReversalCompletedMessage>
-    <BiosculpterPleasureCompletedMessage>{PAWN_labelShort}'s pleasure cycle is complete.</BiosculpterPleasureCompletedMessage>
+    <BiosculpterEnteringMessage>{0} will enter biosculpter and begin a {1} cycle.</BiosculpterEnteringMessage>
+    <BiosculpterLoadingStartedMessage>{0} will collect {1}, and begin a {2} cycle.</BiosculpterLoadingStartedMessage>
+    <BiosculpterCarryStartedMessage>{0} will collect {1}, place {2} inside the biosculpter, and begin a {3} cycle.</BiosculpterCarryStartedMessage>
+    <BiosculpterNoPowerEjectedMessage>{0} was ejected from a biosculpter pod due to lack of power.</BiosculpterNoPowerEjectedMessage>
+    <BiosculpterHealCompletedMessage>{0} completed healing cycle.</BiosculpterHealCompletedMessage>
+    <BiosculpterHealCompletedWithCureMessage>{0} completed healing cycle, and {1} was cured.</BiosculpterHealCompletedWithCureMessage>
+    <BiosculpterAgeReversalCompletedMessage>{0} completed {1} age reversal cycle.</BiosculpterAgeReversalCompletedMessage>
+    <BiosculpterPleasureCompletedMessage>{0}'s pleasure cycle is complete.</BiosculpterPleasureCompletedMessage>
     <!-- Script_ReliquaryPilgrims.xml -->
     <PilgrimsLeavingMessage>{0} finished venerating {1} and {2} now leaving.</PilgrimsLeavingMessage>
     <PilgrimsLeftMessage>{0} left the map.</PilgrimsLeftMessage>
