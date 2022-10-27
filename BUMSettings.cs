@@ -640,7 +640,7 @@ namespace BlockUnwantedMinutiae
             "ColonistNeedsRescuing",
             "ColonistNeedsTend",
             "ColonistsIdle",
-            "DormanyWakeUpDelay",
+            "DormancyWakeUpDelay",
             "Exhaustion",
             "FireInHomeArea",
             "FuelNodeIgnition",
