@@ -107,7 +107,7 @@
     <LetterLabelSiteNoLongerHostileMulti>Quests no longer available</LetterLabelSiteNoLongerHostileMulti>
     <LetterLabelQuestFailedReason>Quest failed</LetterLabelQuestFailedReason>
     <!-- Messages.xml -->
-    <LetterLabelMessageRecruitSuccess>New recruit</LetterLabelMessageRecruitSuccess>
+    <LetterLabelMessageRecruitSuccess>New recruit: {0}</LetterLabelMessageRecruitSuccess>
     <!-- Thoughts_Memory_Misc.xml -->
     <LetterLabelCatharsis>Catharsis: {0}</LetterLabelCatharsis>
 
