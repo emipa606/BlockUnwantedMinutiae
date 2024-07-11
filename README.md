@@ -1,4 +1,4 @@
-# [Block Unwanted Minutiae (Continued)]()
+# [Block Unwanted Minutiae (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3278213153)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 
@@ -75,11 +75,6 @@ This mod blocks some unwanted messages, alerts, letters, and misc features that 
 
 
 
-[hr][/hr]
-# Links
-
-Report bugs and request additions on Github:
-https://github.com/MrChimick/BlockUnwantedMinutiae
 
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
@@ -94,3 +89,5 @@ https://github.com/MrChimick/BlockUnwantedMinutiae
 -  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
 
+
+[![Image](https://img.shields.io/github/v/release/emipa606/BlockUnwantedMinutiae?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3278213153)

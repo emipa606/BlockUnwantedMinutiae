@@ -10,6 +10,9 @@ public class BUMSettings : ModSettings
     public readonly bool[] genericLetter_values = new bool[genericLetter_labels.Count];
 
     public readonly bool[] genericMessage_values = new bool[genericMessage_labels.Count];
+    private List<string> activeAlertPatches;
+    private List<string> activeLetterPatches;
+    private List<string> activeMessagePatches;
     public bool drawAutoSelectCheckboxPatch = true;
     public bool idleColonistsPatch = true;
 
@@ -560,6 +563,7 @@ public class BUMSettings : ModSettings
         "MessageNoRockets",
         // Misc_Gameplay.xml
         "BladelinkAlreadyBondedMessage",
+        "WillGetWorkSpeedPenalty",
         // Dialogs_Various.xml
         "MessageMustChooseRouteFirst",
         "MessageNoValidExitTile",
@@ -1246,6 +1250,78 @@ public class BUMSettings : ModSettings
         "VoidCuriosityLabel"
     ];
 
+    public List<string> ActiveMessagePatches
+    {
+        get
+        {
+            if (activeMessagePatches != null)
+            {
+                return activeMessagePatches;
+            }
+
+            activeMessagePatches = [];
+
+            for (var i = 0; i < genericMessage_labels.Count; i++)
+            {
+                if (genericMessage_values[i])
+                {
+                    activeMessagePatches.Add(genericMessage_labels[i]);
+                }
+            }
+
+            return activeMessagePatches;
+        }
+        set => activeMessagePatches = value;
+    }
+
+    public List<string> ActiveAlertPatches
+    {
+        get
+        {
+            if (activeAlertPatches != null)
+            {
+                return activeAlertPatches;
+            }
+
+            activeAlertPatches = [];
+
+            for (var i = 0; i < genericAlert_labels.Count; i++)
+            {
+                if (genericAlert_values[i])
+                {
+                    activeAlertPatches.Add(genericAlert_labels[i]);
+                }
+            }
+
+            return activeAlertPatches;
+        }
+        set => activeAlertPatches = value;
+    }
+
+    public List<string> ActiveLetterPatches
+    {
+        get
+        {
+            if (activeLetterPatches != null)
+            {
+                return activeLetterPatches;
+            }
+
+            activeLetterPatches = [];
+
+            for (var i = 0; i < genericLetter_labels.Count; i++)
+            {
+                if (genericLetter_values[i])
+                {
+                    activeLetterPatches.Add(genericLetter_labels[i]);
+                }
+            }
+
+            return activeLetterPatches;
+        }
+        set => activeLetterPatches = value;
+    }
+
     public override void ExposeData()
     {
         for (var i = 0; i < genericMessage_labels.Count; i++)
@@ -1269,49 +1345,11 @@ public class BUMSettings : ModSettings
         base.ExposeData();
     }
 
-    public List<string> ActiveGenericMessagePatches()
+    public void ResetPatches()
     {
-        var activePatches = new List<string>();
-
-        for (var i = 0; i < genericMessage_labels.Count; i++)
-        {
-            if (genericMessage_values[i])
-            {
-                activePatches.Add(genericMessage_labels[i]);
-            }
-        }
-
-        return activePatches;
-    }
-
-    public List<string> ActiveGenericAlertPatches()
-    {
-        var activePatches = new List<string>();
-
-        for (var i = 0; i < genericAlert_labels.Count; i++)
-        {
-            if (genericAlert_values[i])
-            {
-                activePatches.Add(genericAlert_labels[i]);
-            }
-        }
-
-        return activePatches;
-    }
-
-    public List<string> ActiveGenericLetterPatches()
-    {
-        var activePatches = new List<string>();
-
-        for (var i = 0; i < genericLetter_labels.Count; i++)
-        {
-            if (genericLetter_values[i])
-            {
-                activePatches.Add(genericLetter_labels[i]);
-            }
-        }
-
-        return activePatches;
+        ActiveMessagePatches = null;
+        ActiveAlertPatches = null;
+        ActiveLetterPatches = null;
     }
 
     public bool GetGenericMessagePatchValue(string label)

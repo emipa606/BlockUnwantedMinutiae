@@ -158,13 +158,13 @@ internal class AlertPatches
             return true;
         }
 
-        if (classMap.TryGetValue(__originalMethod.ReflectedType.Name, out var value) == false)
+        if (classMap.TryGetValue(__originalMethod.ReflectedType.Name, out var value))
         {
-            Log.ErrorOnce($"Failed to find alert type for {__originalMethod.ReflectedType.Name}",
-                __originalMethod.ReflectedType.Name.GetHashCode());
-            return true;
+            return !BUMMod.Instance.settings.GetGenericAlertPatchValue(value);
         }
 
-        return !BUMMod.Instance.settings.GetGenericAlertPatchValue(value);
+        Log.ErrorOnce($"Failed to find alert type for {__originalMethod.ReflectedType.Name}",
+            __originalMethod.ReflectedType.Name.GetHashCode());
+        return true;
     }
 }

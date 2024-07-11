@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BlockUnwantedMinutiae.Patches;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -91,7 +92,7 @@ public class BUMMod : Mod
         customList.GapLine();
         customList.End();
 
-        if (tab == Tab.Messages || tab == Tab.Alerts || tab == Tab.Letters)
+        if (tab is Tab.Messages or Tab.Alerts or Tab.Letters)
         {
             var genericTitle = new Listing_Standard();
             genericTitle.Begin(genericTitleRect);
@@ -139,6 +140,12 @@ public class BUMMod : Mod
             }
 
             scrollRect.width = genericViewRect.width - 20f;
+            var searchOn = searchText.Length > 0;
+            if (searchOn)
+            {
+                scrollPosition = Vector2.zero;
+            }
+
             Widgets.BeginScrollView(genericViewRect, ref scrollPosition, scrollRect);
             var listRect = scrollRect;
             var listingStandard = new Listing_Standard
@@ -147,8 +154,6 @@ public class BUMMod : Mod
             };
             listingStandard.Begin(listRect);
 
-
-            var searchOn = searchText.Length > 0;
             switch (tab)
             {
                 case Tab.Messages:
@@ -260,6 +265,13 @@ public class BUMMod : Mod
 
                 break;
         }
+    }
+
+    public override void WriteSettings()
+    {
+        base.WriteSettings();
+        settings.ResetPatches();
+        GenericMessagePatchHelper.ResetPatches();
     }
 
     private enum Tab

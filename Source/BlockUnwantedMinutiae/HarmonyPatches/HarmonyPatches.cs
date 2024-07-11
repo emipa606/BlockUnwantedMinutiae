@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using BlockUnwantedMinutiae.Patches;
 using HarmonyLib;
 using Verse;
 
@@ -10,5 +11,7 @@ internal static class HarmonyPatches
     static HarmonyPatches()
     {
         new Harmony("BlockUnwantedMinutiae").PatchAll(Assembly.GetExecutingAssembly());
+        BUMMod.Instance.settings.ResetPatches();
+        GenericMessagePatchHelper.ResetPatches();
     }
 }
