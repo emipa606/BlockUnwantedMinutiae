@@ -1,5 +1,8 @@
 # Changelog for BlockUnwantedMinutiae
 
+1.5.3 - Added MessageTakingBabyToSafeTemperature
+
+
 1.5.2 - Added some caching for large lists of exclusions. Fixed the searching in the mod-options.
 
 

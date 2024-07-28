@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>fed121e8-383e-4c54-893f-061ace726b45</ID>
   <ModName>Block Unwanted Minutiae (Continued)</ModName>
-  <Version>1.5.2</Version>
+  <Version>1.5.3</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>

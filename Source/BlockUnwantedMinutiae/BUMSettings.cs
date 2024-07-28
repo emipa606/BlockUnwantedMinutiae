@@ -458,6 +458,7 @@ public class BUMSettings : ModSettings
         "MessageCannotStartHemogenExtraction",
         "MessageCannotPostponeGrowthMoment",
         "MessageDraftedPawnCarryingBaby",
+        "MessageTakingBabyToSafeTemperature",
         // ANOMALY
         "MessageActivityRisingDamage",
         "EntityDiedOnHoldingPlatform",
