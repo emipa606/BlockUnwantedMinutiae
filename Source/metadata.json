@@ -2,6 +2,9 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "0",
+  "SkipLanguages": [
+    "ChineseSimplified"
+  ],
   "SocialImageSet": true,
   "PreviewVersion": "1.5"
 }

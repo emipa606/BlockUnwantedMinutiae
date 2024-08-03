@@ -1,5 +1,8 @@
 # Changelog for BlockUnwantedMinutiae
 
+1.5.4 - Removed chinese auto-translation due to poor quality
+
+
 1.5.3 - Added MessageTakingBabyToSafeTemperature
 
 
