@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Verse;
 
 namespace BlockUnwantedMinutiae;
@@ -13,10 +14,41 @@ public class BUMSettings : ModSettings
     private List<string> activeAlertPatches;
     private List<string> activeLetterPatches;
     private List<string> activeMessagePatches;
+
+    private List<string> customFilters = [];
     public bool drawAutoSelectCheckboxPatch = true;
     public bool idleColonistsPatch = true;
+    private List<string> seenText = [];
 
     public bool taintedMessagePatch = true;
+
+    public List<string> CustomFilters
+    {
+        get
+        {
+            if (customFilters == null)
+            {
+                customFilters = [];
+            }
+
+            return customFilters;
+        }
+        private set => customFilters = value;
+    }
+
+    public List<string> SeenText
+    {
+        get
+        {
+            if (seenText == null)
+            {
+                seenText = [];
+            }
+
+            return seenText;
+        }
+        private set => seenText = value;
+    }
 
     public static IReadOnlyList<string> genericMessage_labels { get; } =
     [
@@ -1343,6 +1375,8 @@ public class BUMSettings : ModSettings
         Scribe_Values.Look(ref taintedMessagePatch, "taintedMessagePatch");
         Scribe_Values.Look(ref idleColonistsPatch, "idleColonistsPatch");
         Scribe_Values.Look(ref drawAutoSelectCheckboxPatch, "drawAutoSelectCheckboxPatch");
+        Scribe_Collections.Look(ref customFilters, "customFilters", LookMode.Value);
+        Scribe_Collections.Look(ref seenText, "seenText", LookMode.Value);
         base.ExposeData();
     }
 
@@ -1376,6 +1410,8 @@ public class BUMSettings : ModSettings
             }
         }
 
+        BUMMod.Instance.settings.TryAddSeenText(label);
+
         throw new ArgumentException($"Argument {label} not found in the list.");
     }
 
@@ -1390,5 +1426,65 @@ public class BUMSettings : ModSettings
         }
 
         throw new ArgumentException($"Argument {label} not found in the list.");
+    }
+
+    public void TryAddSeenText(string text)
+    {
+        if (SeenText.Contains(text))
+        {
+            return;
+        }
+
+        SeenText.Add(text);
+
+        if (SeenText.Count > 50)
+        {
+            // Trim it
+            SeenText = SeenText.GetRange(SeenText.Count - 50, 50);
+        }
+
+        Scribe_Collections.Look(ref seenText, "seenText", LookMode.Value);
+    }
+
+    public bool ShouldBlock(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return false;
+        }
+
+        foreach (var customFilter in CustomFilters)
+        {
+            if (Matches(customFilter, text))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool Matches(string filter, string text)
+    {
+        if (string.IsNullOrEmpty(filter))
+        {
+            return false;
+        }
+
+        if (!filter.Contains("*"))
+        {
+            return filter.Equals(text, StringComparison.OrdinalIgnoreCase);
+        }
+
+        var filterSplit = filter.Split('*');
+        var resultingArray = new List<string>();
+        foreach (var part in filterSplit)
+        {
+            resultingArray.Add(Regex.Escape(part));
+        }
+
+        var resultingString = string.Join(".*", resultingArray);
+
+        return Regex.IsMatch(text, resultingString, RegexOptions.IgnoreCase);
     }
 }

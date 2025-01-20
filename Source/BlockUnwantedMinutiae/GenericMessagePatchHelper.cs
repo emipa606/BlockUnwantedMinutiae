@@ -36,6 +36,13 @@ internal static class GenericMessagePatchHelper
             return false;
         }
 
+        if (BUMMod.Instance.settings.ShouldBlock(text))
+        {
+            messagePatchesLookup[text] = false;
+            return false;
+        }
+
+        BUMMod.Instance.settings.TryAddSeenText(text);
         messagePatchesLookup[text] = true;
         return true;
     }
@@ -61,6 +68,13 @@ internal static class GenericMessagePatchHelper
             return false;
         }
 
+        if (BUMMod.Instance.settings.ShouldBlock(text))
+        {
+            messagePatchesLookup[text] = false;
+            return false;
+        }
+
+        BUMMod.Instance.settings.TryAddSeenText(text);
         letterPatchesLookup[text] = true;
         return true;
     }

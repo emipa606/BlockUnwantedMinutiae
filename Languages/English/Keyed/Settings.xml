@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <BUM.Add>Add</BUM.Add>
+  <BUM.SelectAll>Select All</BUM.SelectAll>
+  <BUM.SelectNone>Deselect All</BUM.SelectNone>
+  <BUM.RuleExists>Match already added</BUM.RuleExists>
+  <BUM.CustomBlockers>Defined Blockers</BUM.CustomBlockers>
+  <BUM.MessageBlockers>Message Blockers</BUM.MessageBlockers>
+  <BUM.AlertBlockers>Alert Blockers</BUM.AlertBlockers>
+  <BUM.LetterBlockers>Letter Blockers</BUM.LetterBlockers>
+  <BUM.MessageSettings>Specific Message Settings</BUM.MessageSettings>
+  <BUM.AlertSettings>Specific Alert Settings</BUM.AlertSettings>
+  <BUM.LetterSettings>Specific Letter Settings</BUM.LetterSettings>
+  <BUM.MiscellaneousSettings>Miscellaneous Settings</BUM.MiscellaneousSettings>
+  <BUM.DeterioratedTainted>MessageDeterioratedAway - But only tainted apparel</BUM.DeterioratedTainted>
+  <BUM.IdleColonists>ColonistsIdle - But only for your own colonists, not guests</BUM.IdleColonists>
+  <BUM.NoCustomLetters>No custom letter blockers currently; requests open on the workshop.</BUM.NoCustomLetters>
+  <BUM.NoAddFood>Remove and disable the automatically add food to caravan checkbox</BUM.NoAddFood>
+  <BUM.CurrentMatches>Current matches</BUM.CurrentMatches>
+  <BUM.LatestSeen>Logged text</BUM.LatestSeen>
+  <BUM.LatestSeenTooltip>The last 50 messages and letter-titles seen will be shown here</BUM.LatestSeenTooltip>
+  <BUM.CustomSettingsInfo>Define custom global matches. Use * to match any character to make generic matches.</BUM.CustomSettingsInfo>
+</LanguageData>

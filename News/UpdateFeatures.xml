@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<HugsLib.UpdateFeatureDef Abstract="true" Name="BlockUnwantedMinutiae_UpdateFeatureBase">
+		<modNameReadable>BlockUnwantedMinutiae</modNameReadable>
+		<linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3278213153</linkUrl>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="BlockUnwantedMinutiae_UpdateFeatureBase">
+		<defName>BlockUnwantedMinutiae_1_5_4</defName>
+		<assemblyVersion>1.5.4</assemblyVersion>
+		<content>The options now include the possibility to define custom filters for messages and letters</content>
+	</HugsLib.UpdateFeatureDef>
+</Defs>
+
