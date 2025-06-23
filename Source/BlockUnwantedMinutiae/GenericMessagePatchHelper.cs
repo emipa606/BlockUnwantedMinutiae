@@ -6,8 +6,8 @@ namespace BlockUnwantedMinutiae.Patches;
 
 internal static class GenericMessagePatchHelper
 {
-    private static readonly Dictionary<string, bool> messagePatchesLookup = new Dictionary<string, bool>();
-    private static readonly Dictionary<string, bool> letterPatchesLookup = new Dictionary<string, bool>();
+    private static readonly Dictionary<string, bool> messagePatchesLookup = new();
+    private static readonly Dictionary<string, bool> letterPatchesLookup = new();
 
     public static void ResetPatches()
     {
@@ -22,9 +22,9 @@ internal static class GenericMessagePatchHelper
             return result;
         }
 
-        foreach (var l in BUMMod.Instance.settings.ActiveMessagePatches)
+        foreach (var l in BUMMod.Instance.Settings.ActiveMessagePatches)
         {
-            var targetMsg = ReplaceTags(l.Translate());
+            var targetMsg = replaceTags(l.Translate());
             var regex = new Regex($".*{targetMsg}");
 
             if (regex.Match(text).Length <= 0)
@@ -36,13 +36,13 @@ internal static class GenericMessagePatchHelper
             return false;
         }
 
-        if (BUMMod.Instance.settings.ShouldBlock(text))
+        if (BUMMod.Instance.Settings.ShouldBlock(text))
         {
             messagePatchesLookup[text] = false;
             return false;
         }
 
-        BUMMod.Instance.settings.TryAddSeenText(text);
+        BUMMod.Instance.Settings.TryAddSeenText(text);
         messagePatchesLookup[text] = true;
         return true;
     }
@@ -54,9 +54,9 @@ internal static class GenericMessagePatchHelper
             return result;
         }
 
-        foreach (var l in BUMMod.Instance.settings.ActiveLetterPatches)
+        foreach (var l in BUMMod.Instance.Settings.ActiveLetterPatches)
         {
-            var targetMsg = ReplaceTags(l.Translate());
+            var targetMsg = replaceTags(l.Translate());
             var regex = new Regex($"{targetMsg}");
 
             if (regex.Match(text).Length <= 0)
@@ -68,18 +68,18 @@ internal static class GenericMessagePatchHelper
             return false;
         }
 
-        if (BUMMod.Instance.settings.ShouldBlock(text))
+        if (BUMMod.Instance.Settings.ShouldBlock(text))
         {
             messagePatchesLookup[text] = false;
             return false;
         }
 
-        BUMMod.Instance.settings.TryAddSeenText(text);
+        BUMMod.Instance.Settings.TryAddSeenText(text);
         letterPatchesLookup[text] = true;
         return true;
     }
 
-    private static string ReplaceTags(string text)
+    private static string replaceTags(string text)
     {
         var regex = new Regex(@"{\S*}");
         return regex.Replace(text, ".*");

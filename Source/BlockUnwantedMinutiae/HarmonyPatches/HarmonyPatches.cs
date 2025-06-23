@@ -11,7 +11,7 @@ internal static class HarmonyPatches
     static HarmonyPatches()
     {
         new Harmony("BlockUnwantedMinutiae").PatchAll(Assembly.GetExecutingAssembly());
-        BUMMod.Instance.settings.ResetPatches();
+        BUMMod.Instance.Settings.ResetPatches();
         GenericMessagePatchHelper.ResetPatches();
     }
 }

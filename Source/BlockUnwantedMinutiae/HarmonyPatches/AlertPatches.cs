@@ -11,7 +11,7 @@ namespace BlockUnwantedMinutiae.HarmonyPatches;
 [HarmonyPatch]
 internal class AlertPatches
 {
-    private static readonly ReadOnlyDictionary<string, string> classMap = new ReadOnlyDictionary<string, string>(
+    private static readonly ReadOnlyDictionary<string, string> classMap = new(
         new Dictionary<string, string>
         {
             // CORE
@@ -160,7 +160,7 @@ internal class AlertPatches
 
         if (classMap.TryGetValue(__originalMethod.ReflectedType.Name, out var value))
         {
-            return !BUMMod.Instance.settings.GetGenericAlertPatchValue(value);
+            return !BUMMod.Instance.Settings.GetGenericAlertPatchValue(value);
         }
 
         Log.ErrorOnce($"Failed to find alert type for {__originalMethod.ReflectedType.Name}",

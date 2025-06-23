@@ -10,7 +10,7 @@ internal static class BreakRiskAlertUtility_PawnsAtRiskMajor
 {
     private static void Postfix(ref List<Pawn> __result)
     {
-        if (BUMMod.Instance.settings.GetGenericAlertPatchValue("BreakRiskMajor"))
+        if (BUMMod.Instance.Settings.GetGenericAlertPatchValue("BreakRiskMajor"))
         {
             __result = [];
         }

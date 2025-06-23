@@ -7,29 +7,26 @@ namespace BlockUnwantedMinutiae;
 
 public class BUMSettings : ModSettings
 {
-    public readonly bool[] genericAlert_values = new bool[genericAlert_labels.Count];
-    public readonly bool[] genericLetter_values = new bool[genericLetter_labels.Count];
+    public readonly bool[] GenericAlertValues = new bool[GenericAlertLabels.Count];
+    public readonly bool[] GenericLetterValues = new bool[GenericLetterLabels.Count];
 
-    public readonly bool[] genericMessage_values = new bool[genericMessage_labels.Count];
+    public readonly bool[] GenericMessageValues = new bool[GenericMessageLabels.Count];
     private List<string> activeAlertPatches;
     private List<string> activeLetterPatches;
     private List<string> activeMessagePatches;
 
     private List<string> customFilters = [];
-    public bool drawAutoSelectCheckboxPatch = true;
-    public bool idleColonistsPatch = true;
+    public bool DrawAutoSelectCheckboxPatch = true;
+    public bool IdleColonistsPatch = true;
     private List<string> seenText = [];
 
-    public bool taintedMessagePatch = true;
+    public bool TaintedMessagePatch = true;
 
     public List<string> CustomFilters
     {
         get
         {
-            if (customFilters == null)
-            {
-                customFilters = [];
-            }
+            customFilters ??= [];
 
             return customFilters;
         }
@@ -40,17 +37,14 @@ public class BUMSettings : ModSettings
     {
         get
         {
-            if (seenText == null)
-            {
-                seenText = [];
-            }
+            seenText ??= [];
 
             return seenText;
         }
         private set => seenText = value;
     }
 
-    public static IReadOnlyList<string> genericMessage_labels { get; } =
+    public static IReadOnlyList<string> GenericMessageLabels { get; } =
     [
         // Messages.xml
         // CORE
@@ -719,7 +713,7 @@ public class BUMSettings : ModSettings
         "MessageChimeraWithdrawing"
     ];
 
-    public static IReadOnlyList<string> genericAlert_labels { get; } =
+    public static IReadOnlyList<string> GenericAlertLabels { get; } =
     [
         // CUSTOM
         "BreakRiskMinor",
@@ -854,7 +848,7 @@ public class BUMSettings : ModSettings
         "AlertAnalyzable"
     ];
 
-    public static IReadOnlyList<string> genericLetter_labels { get; } =
+    public static IReadOnlyList<string> GenericLetterLabels { get; } =
     [
         // Letters.xml
         // CORE
@@ -1294,40 +1288,21 @@ public class BUMSettings : ModSettings
 
             activeMessagePatches = [];
 
-            for (var i = 0; i < genericMessage_labels.Count; i++)
+            for (var i = 0; i < GenericMessageLabels.Count; i++)
             {
-                if (genericMessage_values[i])
+                if (GenericMessageValues[i])
                 {
-                    activeMessagePatches.Add(genericMessage_labels[i]);
+                    activeMessagePatches.Add(GenericMessageLabels[i]);
                 }
             }
 
             return activeMessagePatches;
         }
-        set => activeMessagePatches = value;
+        private set => activeMessagePatches = value;
     }
 
     public List<string> ActiveAlertPatches
     {
-        get
-        {
-            if (activeAlertPatches != null)
-            {
-                return activeAlertPatches;
-            }
-
-            activeAlertPatches = [];
-
-            for (var i = 0; i < genericAlert_labels.Count; i++)
-            {
-                if (genericAlert_values[i])
-                {
-                    activeAlertPatches.Add(genericAlert_labels[i]);
-                }
-            }
-
-            return activeAlertPatches;
-        }
         set => activeAlertPatches = value;
     }
 
@@ -1342,39 +1317,39 @@ public class BUMSettings : ModSettings
 
             activeLetterPatches = [];
 
-            for (var i = 0; i < genericLetter_labels.Count; i++)
+            for (var i = 0; i < GenericLetterLabels.Count; i++)
             {
-                if (genericLetter_values[i])
+                if (GenericLetterValues[i])
                 {
-                    activeLetterPatches.Add(genericLetter_labels[i]);
+                    activeLetterPatches.Add(GenericLetterLabels[i]);
                 }
             }
 
             return activeLetterPatches;
         }
-        set => activeLetterPatches = value;
+        private set => activeLetterPatches = value;
     }
 
     public override void ExposeData()
     {
-        for (var i = 0; i < genericMessage_labels.Count; i++)
+        for (var i = 0; i < GenericMessageLabels.Count; i++)
         {
-            Scribe_Values.Look(ref genericMessage_values[i], genericMessage_labels[i]);
+            Scribe_Values.Look(ref GenericMessageValues[i], GenericMessageLabels[i]);
         }
 
-        for (var i = 0; i < genericAlert_labels.Count; i++)
+        for (var i = 0; i < GenericAlertLabels.Count; i++)
         {
-            Scribe_Values.Look(ref genericAlert_values[i], genericAlert_labels[i]);
+            Scribe_Values.Look(ref GenericAlertValues[i], GenericAlertLabels[i]);
         }
 
-        for (var i = 0; i < genericLetter_labels.Count; i++)
+        for (var i = 0; i < GenericLetterLabels.Count; i++)
         {
-            Scribe_Values.Look(ref genericLetter_values[i], genericLetter_labels[i]);
+            Scribe_Values.Look(ref GenericLetterValues[i], GenericLetterLabels[i]);
         }
 
-        Scribe_Values.Look(ref taintedMessagePatch, "taintedMessagePatch");
-        Scribe_Values.Look(ref idleColonistsPatch, "idleColonistsPatch");
-        Scribe_Values.Look(ref drawAutoSelectCheckboxPatch, "drawAutoSelectCheckboxPatch");
+        Scribe_Values.Look(ref TaintedMessagePatch, "taintedMessagePatch");
+        Scribe_Values.Look(ref IdleColonistsPatch, "idleColonistsPatch");
+        Scribe_Values.Look(ref DrawAutoSelectCheckboxPatch, "drawAutoSelectCheckboxPatch");
         Scribe_Collections.Look(ref customFilters, "customFilters", LookMode.Value);
         Scribe_Collections.Look(ref seenText, "seenText", LookMode.Value);
         base.ExposeData();
@@ -1387,43 +1362,17 @@ public class BUMSettings : ModSettings
         ActiveLetterPatches = null;
     }
 
-    public bool GetGenericMessagePatchValue(string label)
-    {
-        for (var i = 0; i < genericMessage_labels.Count; i++)
-        {
-            if (genericMessage_labels[i] == label)
-            {
-                return genericMessage_values[i];
-            }
-        }
-
-        throw new ArgumentException($"Argument {label} not found in the list.");
-    }
-
     public bool GetGenericAlertPatchValue(string label)
     {
-        for (var i = 0; i < genericAlert_labels.Count; i++)
+        for (var i = 0; i < GenericAlertLabels.Count; i++)
         {
-            if (genericAlert_labels[i] == label)
+            if (GenericAlertLabels[i] == label)
             {
-                return genericAlert_values[i];
+                return GenericAlertValues[i];
             }
         }
 
-        BUMMod.Instance.settings.TryAddSeenText(label);
-
-        throw new ArgumentException($"Argument {label} not found in the list.");
-    }
-
-    public bool GetGenericLetterPatchValue(string label)
-    {
-        for (var i = 0; i < genericLetter_labels.Count; i++)
-        {
-            if (genericLetter_labels[i] == label)
-            {
-                return genericLetter_values[i];
-            }
-        }
+        BUMMod.Instance.Settings.TryAddSeenText(label);
 
         throw new ArgumentException($"Argument {label} not found in the list.");
     }
@@ -1464,7 +1413,7 @@ public class BUMSettings : ModSettings
         return false;
     }
 
-    public bool Matches(string filter, string text)
+    public static bool Matches(string filter, string text)
     {
         if (string.IsNullOrEmpty(filter))
         {

@@ -10,12 +10,12 @@ namespace BlockUnwantedMinutiae;
 
 public class BUMMod : Mod
 {
-    private const int LINE_MAX = 100;
+    private const int LineMax = 100;
     private static readonly List<TabRecord> tabsList = [];
     private static string searchText = "";
     public static BUMMod Instance;
-    private static readonly Color alternateBackground = new Color(0.1f, 0.1f, 0.1f, 0.5f);
-    public readonly BUMSettings settings;
+    private static readonly Color alternateBackground = new(0.1f, 0.1f, 0.1f, 0.5f);
+    public readonly BUMSettings Settings;
     private string newRule;
     private Vector2 scrollPosition;
     private Vector2 scrollPosition2;
@@ -25,7 +25,7 @@ public class BUMMod : Mod
     public BUMMod(ModContentPack content) : base(content)
     {
         Instance = this;
-        settings = GetSettings<BUMSettings>();
+        Settings = GetSettings<BUMSettings>();
     }
 
     public override void DoSettingsWindowContents(Rect inRect)
@@ -76,14 +76,14 @@ public class BUMMod : Mod
                 if (!string.IsNullOrEmpty(newRule) &&
                     Widgets.ButtonText(addRect.RightPart(0.08f), "BUM.Add".Translate()))
                 {
-                    if (Instance.settings.CustomFilters.Contains(newRule))
+                    if (Instance.Settings.CustomFilters.Contains(newRule))
                     {
                         Messages.Message("BUM.RuleExists".Translate(), MessageTypeDefOf.RejectInput);
                     }
                     else
                     {
-                        Instance.settings.CustomFilters.Add(newRule);
-                        Instance.settings.ExposeData();
+                        Instance.Settings.CustomFilters.Add(newRule);
+                        Instance.Settings.ExposeData();
                         newRule = string.Empty;
                     }
                 }
@@ -93,12 +93,12 @@ public class BUMMod : Mod
             case Tab.Messages:
                 customList.Label("BUM.MessageSettings".Translate());
                 Text.Font = GameFont.Small;
-                customList.CheckboxLabeled("BUM.DeterioratedTainted".Translate(), ref settings.taintedMessagePatch);
+                customList.CheckboxLabeled("BUM.DeterioratedTainted".Translate(), ref Settings.TaintedMessagePatch);
                 break;
             case Tab.Alerts:
                 customList.Label("BUM.AlertSettings".Translate());
                 Text.Font = GameFont.Small;
-                customList.CheckboxLabeled("BUM.IdleColonists".Translate(), ref settings.idleColonistsPatch);
+                customList.CheckboxLabeled("BUM.IdleColonists".Translate(), ref Settings.IdleColonistsPatch);
                 break;
             case Tab.Letters:
                 customList.Label("BUM.LetterSettings".Translate());
@@ -108,7 +108,7 @@ public class BUMMod : Mod
             case Tab.Misc:
                 customList.Label("BUM.MiscellaneousSettings".Translate());
                 Text.Font = GameFont.Small;
-                customList.CheckboxLabeled("BUM.NoAddFood".Translate(), ref settings.drawAutoSelectCheckboxPatch);
+                customList.CheckboxLabeled("BUM.NoAddFood".Translate(), ref Settings.DrawAutoSelectCheckboxPatch);
                 break;
         }
 
@@ -116,134 +116,134 @@ public class BUMMod : Mod
         customList.GapLine();
         customList.End();
 
-        if (tab is Tab.Misc)
+        switch (tab)
         {
-            base.DoSettingsWindowContents(inRect);
-            return;
-        }
-
-        if (tab is Tab.Custom)
-        {
-            var leftViewRect = genericRect.LeftHalf().ContractedBy(1f);
-            var leftListing = new Listing_Standard();
-            leftListing.Begin(leftViewRect);
-            Text.Font = GameFont.Medium;
-            var titleRect = leftListing.Label("BUM.CurrentMatches".Translate());
-            Text.Font = GameFont.Small;
-            leftListing.End();
-
-            var borderRect = leftViewRect;
-            borderRect.y += titleRect.y + 40;
-            borderRect.height -= titleRect.y + 40;
-
-            var scrollContentRect = leftViewRect;
-            scrollContentRect.height = Math.Max(Instance.settings.CustomFilters.Count * 50f, borderRect.height);
-            scrollContentRect.width -= 20f;
-            scrollContentRect.x = 0;
-            scrollContentRect.y = 0;
-
-            var scrollListing = new Listing_Standard();
-
-            Widgets.BeginScrollView(borderRect, ref scrollPosition2, scrollContentRect);
-
-            scrollListing.Begin(scrollContentRect);
-            var alternate = false;
-            for (var index = 0; index < Instance.settings.CustomFilters.Count; index++)
+            case Tab.Misc:
+                base.DoSettingsWindowContents(inRect);
+                return;
+            case Tab.Custom:
             {
-                var filter = Instance.settings.CustomFilters[index];
-                alternate = !alternate;
-                var sliderRect = scrollListing.GetRect(50f);
-                if (alternate)
-                {
-                    Widgets.DrawBoxSolid(sliderRect, alternateBackground);
-                }
-
-                if (filter.Length > 100)
-                {
-                    Text.Font = GameFont.Tiny;
-                }
-
-                Widgets.Label(sliderRect.ContractedBy(1).LeftPart(0.9f), filter);
+                var leftViewRect = genericRect.LeftHalf().ContractedBy(1f);
+                var leftListing = new Listing_Standard();
+                leftListing.Begin(leftViewRect);
+                Text.Font = GameFont.Medium;
+                var titleRect = leftListing.Label("BUM.CurrentMatches".Translate());
                 Text.Font = GameFont.Small;
+                leftListing.End();
 
-                if (!Widgets.ButtonImageFitted(
-                        sliderRect.ContractedBy(1).RightPartPixels(sliderRect.height)
-                            .ContractedBy(sliderRect.height / 4), TexButton.CloseXSmall))
+                var borderRect = leftViewRect;
+                borderRect.y += titleRect.y + 40;
+                borderRect.height -= titleRect.y + 40;
+
+                var scrollContentRect = leftViewRect;
+                scrollContentRect.height = Math.Max(Instance.Settings.CustomFilters.Count * 50f, borderRect.height);
+                scrollContentRect.width -= 20f;
+                scrollContentRect.x = 0;
+                scrollContentRect.y = 0;
+
+                var scrollListing = new Listing_Standard();
+
+                Widgets.BeginScrollView(borderRect, ref scrollPosition2, scrollContentRect);
+
+                scrollListing.Begin(scrollContentRect);
+                var alternate = false;
+                for (var index = 0; index < Instance.Settings.CustomFilters.Count; index++)
                 {
-                    continue;
+                    var filter = Instance.Settings.CustomFilters[index];
+                    alternate = !alternate;
+                    var sliderRect = scrollListing.GetRect(50f);
+                    if (alternate)
+                    {
+                        Widgets.DrawBoxSolid(sliderRect, alternateBackground);
+                    }
+
+                    if (filter.Length > 100)
+                    {
+                        Text.Font = GameFont.Tiny;
+                    }
+
+                    Widgets.Label(sliderRect.ContractedBy(1).LeftPart(0.9f), filter);
+                    Text.Font = GameFont.Small;
+
+                    if (!Widgets.ButtonImageFitted(
+                            sliderRect.ContractedBy(1).RightPartPixels(sliderRect.height)
+                                .ContractedBy(sliderRect.height / 4), TexButton.CloseXSmall))
+                    {
+                        continue;
+                    }
+
+                    Instance.Settings.CustomFilters.Remove(filter);
+                    Instance.Settings.ExposeData();
                 }
 
-                Instance.settings.CustomFilters.Remove(filter);
-                Instance.settings.ExposeData();
-            }
-
-            Widgets.EndScrollView();
-            scrollListing.End();
+                Widgets.EndScrollView();
+                scrollListing.End();
 
 
-            var rightViewRect = genericRect.RightHalf().ContractedBy(1f);
-            var rightListing = new Listing_Standard();
-            rightListing.Begin(rightViewRect);
-            Text.Font = GameFont.Medium;
-            var headerLabel =
-                rightListing.Label("BUM.LatestSeen".Translate(), tooltip: "BUM.LatestSeenTooltip".Translate());
-            Text.Font = GameFont.Small;
-            rightListing.End();
-
-            borderRect = rightViewRect;
-            borderRect.y += headerLabel.y + 40;
-            borderRect.height -= headerLabel.y + 40;
-
-            scrollContentRect = rightViewRect;
-            scrollContentRect.height = Math.Max(Instance.settings.SeenText.Count * 51f, borderRect.height);
-            scrollContentRect.width -= 20f;
-            scrollContentRect.x = 0;
-            scrollContentRect.y = 0;
-
-            scrollListing = new Listing_Standard();
-
-            Widgets.BeginScrollView(borderRect, ref scrollPosition3, scrollContentRect);
-
-            scrollListing.Begin(scrollContentRect);
-            alternate = false;
-            foreach (var seen in Instance.settings.SeenText)
-            {
-                alternate = !alternate;
-                var sliderRect = scrollListing.GetRect(50f);
-                if (alternate)
-                {
-                    Widgets.DrawBoxSolid(sliderRect, alternateBackground);
-                }
-
-                var originalColor = GUI.color;
-                if (Instance.settings.Matches(newRule, seen))
-                {
-                    GUI.color = Color.green;
-                }
-
-                if (seen.Length > 100)
-                {
-                    Text.Font = GameFont.Tiny;
-                }
-
-                Widgets.Label(sliderRect.ContractedBy(1).LeftPart(0.9f), seen);
+                var rightViewRect = genericRect.RightHalf().ContractedBy(1f);
+                var rightListing = new Listing_Standard();
+                rightListing.Begin(rightViewRect);
+                Text.Font = GameFont.Medium;
+                var headerLabel =
+                    rightListing.Label("BUM.LatestSeen".Translate(), tooltip: "BUM.LatestSeenTooltip".Translate());
                 Text.Font = GameFont.Small;
-                GUI.color = originalColor;
-                if (!Widgets.ButtonImageFitted(
-                        sliderRect.ContractedBy(1).RightPartPixels(sliderRect.height)
-                            .ContractedBy(sliderRect.height / 4), TexButton.Copy))
+                rightListing.End();
+
+                borderRect = rightViewRect;
+                borderRect.y += headerLabel.y + 40;
+                borderRect.height -= headerLabel.y + 40;
+
+                scrollContentRect = rightViewRect;
+                scrollContentRect.height = Math.Max(Instance.Settings.SeenText.Count * 51f, borderRect.height);
+                scrollContentRect.width -= 20f;
+                scrollContentRect.x = 0;
+                scrollContentRect.y = 0;
+
+                scrollListing = new Listing_Standard();
+
+                Widgets.BeginScrollView(borderRect, ref scrollPosition3, scrollContentRect);
+
+                scrollListing.Begin(scrollContentRect);
+                alternate = false;
+                foreach (var seen in Instance.Settings.SeenText)
                 {
-                    continue;
+                    alternate = !alternate;
+                    var sliderRect = scrollListing.GetRect(50f);
+                    if (alternate)
+                    {
+                        Widgets.DrawBoxSolid(sliderRect, alternateBackground);
+                    }
+
+                    var originalColor = GUI.color;
+                    if (BUMSettings.Matches(newRule, seen))
+                    {
+                        GUI.color = Color.green;
+                    }
+
+                    if (seen.Length > 100)
+                    {
+                        Text.Font = GameFont.Tiny;
+                    }
+
+                    Widgets.Label(sliderRect.ContractedBy(1).LeftPart(0.9f), seen);
+                    Text.Font = GameFont.Small;
+                    GUI.color = originalColor;
+                    if (!Widgets.ButtonImageFitted(
+                            sliderRect.ContractedBy(1).RightPartPixels(sliderRect.height)
+                                .ContractedBy(sliderRect.height / 4), TexButton.Copy))
+                    {
+                        continue;
+                    }
+
+                    newRule = seen;
                 }
 
-                newRule = seen;
+                Widgets.EndScrollView();
+                scrollListing.End();
+
+                base.DoSettingsWindowContents(inRect);
+                return;
             }
-
-            Widgets.EndScrollView();
-            scrollListing.End();
-
-            base.DoSettingsWindowContents(inRect);
-            return;
         }
 
         var genericTitle = new Listing_Standard();
@@ -268,26 +268,26 @@ public class BUMMod : Mod
 
         if (Widgets.ButtonText(genericBtnRect, "BUM.SelectAll".Translate()))
         {
-            ChangeTabPatches(true);
+            changeTabPatches(true);
         }
 
         genericBtnRect.x += 105f;
         if (Widgets.ButtonText(genericBtnRect, "BUM.SelectNone".Translate()))
         {
-            ChangeTabPatches(false);
+            changeTabPatches(false);
         }
 
         var scrollRect = genericViewRect;
         switch (tab)
         {
             case Tab.Messages:
-                scrollRect.height = 26.1f * BUMSettings.genericMessage_labels.Count;
+                scrollRect.height = 26.1f * BUMSettings.GenericMessageLabels.Count;
                 break;
             case Tab.Alerts:
-                scrollRect.height = 26.1f * BUMSettings.genericAlert_labels.Count;
+                scrollRect.height = 26.1f * BUMSettings.GenericAlertLabels.Count;
                 break;
             case Tab.Letters:
-                scrollRect.height = 26.1f * BUMSettings.genericLetter_labels.Count;
+                scrollRect.height = 26.1f * BUMSettings.GenericLetterLabels.Count;
                 break;
         }
 
@@ -309,9 +309,9 @@ public class BUMMod : Mod
         switch (tab)
         {
             case Tab.Messages:
-                for (var i = 0; i < BUMSettings.genericMessage_labels.Count; i++)
+                for (var i = 0; i < BUMSettings.GenericMessageLabels.Count; i++)
                 {
-                    var label = BUMSettings.genericMessage_labels[i];
+                    var label = BUMSettings.GenericMessageLabels[i];
                     string message = $"{label} - " + label.Translate();
 
                     if (searchOn && !message.ToLower().Contains(searchText.ToLower()))
@@ -319,19 +319,19 @@ public class BUMMod : Mod
                         continue;
                     }
 
-                    if (message.Length > LINE_MAX)
+                    if (message.Length > LineMax)
                     {
-                        message = $"{message.Substring(0, LINE_MAX)}...";
+                        message = $"{message[..LineMax]}...";
                     }
 
-                    listingStandard.CheckboxLabeled(message, ref settings.genericMessage_values[i]);
+                    listingStandard.CheckboxLabeled(message, ref Settings.GenericMessageValues[i]);
                 }
 
                 break;
             case Tab.Alerts:
-                for (var i = 0; i < BUMSettings.genericAlert_labels.Count; i++)
+                for (var i = 0; i < BUMSettings.GenericAlertLabels.Count; i++)
                 {
-                    var label = BUMSettings.genericAlert_labels[i];
+                    var label = BUMSettings.GenericAlertLabels[i];
                     string message = $"{label} - " + label.Translate();
 
                     if (searchOn && !message.ToLower().Contains(searchText.ToLower()))
@@ -339,19 +339,19 @@ public class BUMMod : Mod
                         continue;
                     }
 
-                    if (message.Length > LINE_MAX)
+                    if (message.Length > LineMax)
                     {
-                        message = $"{message.Substring(0, LINE_MAX)}...";
+                        message = $"{message[..LineMax]}...";
                     }
 
-                    listingStandard.CheckboxLabeled(message, ref settings.genericAlert_values[i]);
+                    listingStandard.CheckboxLabeled(message, ref Settings.GenericAlertValues[i]);
                 }
 
                 break;
             case Tab.Letters:
-                for (var i = 0; i < BUMSettings.genericLetter_labels.Count; i++)
+                for (var i = 0; i < BUMSettings.GenericLetterLabels.Count; i++)
                 {
-                    var label = BUMSettings.genericLetter_labels[i];
+                    var label = BUMSettings.GenericLetterLabels[i];
                     string message = $"{label} - " + label.Translate();
 
                     if (searchOn && !message.ToLower().Contains(searchText.ToLower()))
@@ -359,12 +359,12 @@ public class BUMMod : Mod
                         continue;
                     }
 
-                    if (message.Length > LINE_MAX)
+                    if (message.Length > LineMax)
                     {
-                        message = $"{message.Substring(0, LINE_MAX)}...";
+                        message = $"{message[..LineMax]}...";
                     }
 
-                    listingStandard.CheckboxLabeled(message, ref settings.genericLetter_values[i]);
+                    listingStandard.CheckboxLabeled(message, ref Settings.GenericLetterValues[i]);
                 }
 
                 break;
@@ -380,7 +380,7 @@ public class BUMMod : Mod
         return "BUM: Block Unwanted Minutiae";
     }
 
-    public void ChangeTabPatches(bool newState)
+    private void changeTabPatches(bool newState)
     {
         if (newState)
         {
@@ -394,23 +394,23 @@ public class BUMMod : Mod
         switch (tab)
         {
             case Tab.Messages:
-                for (var i = 0; i < settings.genericMessage_values.Length; i++)
+                for (var i = 0; i < Settings.GenericMessageValues.Length; i++)
                 {
-                    settings.genericMessage_values[i] = newState;
+                    Settings.GenericMessageValues[i] = newState;
                 }
 
                 break;
             case Tab.Alerts:
-                for (var i = 0; i < settings.genericAlert_values.Length; i++)
+                for (var i = 0; i < Settings.GenericAlertValues.Length; i++)
                 {
-                    settings.genericAlert_values[i] = newState;
+                    Settings.GenericAlertValues[i] = newState;
                 }
 
                 break;
             case Tab.Letters:
-                for (var i = 0; i < settings.genericLetter_values.Length; i++)
+                for (var i = 0; i < Settings.GenericLetterValues.Length; i++)
                 {
-                    settings.genericLetter_values[i] = newState;
+                    Settings.GenericLetterValues[i] = newState;
                 }
 
                 break;
@@ -420,7 +420,7 @@ public class BUMMod : Mod
     public override void WriteSettings()
     {
         base.WriteSettings();
-        settings.ResetPatches();
+        Settings.ResetPatches();
         GenericMessagePatchHelper.ResetPatches();
     }
 

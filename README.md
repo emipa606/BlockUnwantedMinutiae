@@ -4,6 +4,8 @@
 
 Update of mr_chimicks mod https://steamcommunity.com/sharedfiles/filedetails/?id=2266225921
 
+- Added possibility to add custom filters
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)

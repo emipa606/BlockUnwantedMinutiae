@@ -8,7 +8,7 @@ internal static class Dialog_FormCaravan_PostOpen
 {
     private static bool Prefix(Dialog_FormCaravan __instance)
     {
-        if (BUMMod.Instance.settings.drawAutoSelectCheckboxPatch)
+        if (BUMMod.Instance.Settings.DrawAutoSelectCheckboxPatch)
         {
             Traverse.Create(__instance).Field("autoSelectTravelSupplies").SetValue(false);
         }

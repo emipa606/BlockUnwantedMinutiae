@@ -11,7 +11,7 @@ internal static class Messages_Message_4
 {
     private static bool Prefix(string text)
     {
-        if (BUMMod.Instance.settings.taintedMessagePatch == false)
+        if (!BUMMod.Instance.Settings.TaintedMessagePatch)
         {
             return true;
         }

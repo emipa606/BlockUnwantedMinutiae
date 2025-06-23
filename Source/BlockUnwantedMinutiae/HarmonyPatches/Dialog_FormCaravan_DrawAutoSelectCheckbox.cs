@@ -8,7 +8,7 @@ internal static class Dialog_FormCaravan_DrawAutoSelectCheckbox
 {
     private static bool Prefix(Dialog_FormCaravan __instance)
     {
-        if (BUMMod.Instance.settings.drawAutoSelectCheckboxPatch == false)
+        if (!BUMMod.Instance.Settings.DrawAutoSelectCheckboxPatch)
         {
             return true;
         }

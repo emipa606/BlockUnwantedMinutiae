@@ -12,7 +12,7 @@ internal static class Alert_ColonistsIdle_IdleColonists
 {
     private static void Postfix(ref List<Pawn> __result)
     {
-        if (BUMMod.Instance.settings.idleColonistsPatch == false)
+        if (!BUMMod.Instance.Settings.IdleColonistsPatch)
         {
             return;
         }

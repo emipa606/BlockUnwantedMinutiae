@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <TabulaRasa.UpdateDef Abstract="true" Name="BlockUnwantedMinutiae_UpdateInfoBase">
+  <TabulaRasa.UpdateDef Abstract="true" Name="BlockUnwantedMinutiae_UpdateInfoBase" MayRequire="neronix17.toolbox">
     <linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3278213153</linkUrl>
     <banner>UpdateInfo/BlockUnwantedMinutiae</banner>
   </TabulaRasa.UpdateDef>
-  <TabulaRasa.UpdateDef ParentName="BlockUnwantedMinutiae_UpdateInfoBase">
+  <TabulaRasa.UpdateDef ParentName="BlockUnwantedMinutiae_UpdateInfoBase" MayRequire="neronix17.toolbox">
     <defName>BlockUnwantedMinutiae_1_5_4</defName>
     <date>2025/1/20</date>
     <content>The options now include the possibility to define custom filters for messages and letters</content>
