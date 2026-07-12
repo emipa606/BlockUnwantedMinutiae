@@ -3,4 +3,19 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="BlockUnwantedMinutiae/BlockUnwantedMinutiae.csproj" />
+  <Folder Name="/.github/">
+    <File Path="../.github/copilot-instructions.md" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/CustomAlerts.xml" />
+    <File Path="../Languages/English/Keyed/CustomLetters.xml" />
+    <File Path="../Languages/English/Keyed/CustomMessages.xml" />
+    <File Path="../Languages/English/Keyed/Settings.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/">
+    <File Path="../1.6/Defs/UpdateInfo.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
 </Solution>

@@ -127,4 +127,30 @@
   <TryRomanceNoOptsMessage>Personne pour {0} pour la romance.</TryRomanceNoOptsMessage>
   <TryRomanceFailedMessage>{La tentative de romance de {0} a échoué.</TryRomanceFailedMessage>
   <ImplantFailedMessage>L'implantation du {0} dans le {1} a échoué.</ImplantFailedMessage>
+  <!-- DamageDefs -->
+  <!-- GameConditions_Misc.xml -->
+  <!-- Gatherings.xml -->
+  <!-- HediffDefs -->
+  <!-- Inspirations.xml -->
+  <!-- MentalStateDefs -->
+  <!-- ThingDefs_Buildings -->
+  <!-- Misc_Gameplay.xml -->
+  <!-- Dialogs_Various.xml -->
+  <!-- GameplayCommands.xml -->
+  <!-- Incidents.xml -->
+  <!-- ROYALTY -->
+  <!-- Hediffs_Local_Misc.xml -->
+  <!-- Ritual_Behaviors.xml -->
+  <!-- Buildings_ConditionCausers.xml -->
+  <!-- Plants_Wild.xml -->
+  <!-- Script_BuildMonument_Worker.xml -->
+  <!-- IDEOLOGY -->
+  <!-- Abilities.xml -->
+  <!-- Script_ReliquaryPilgrims.xml -->
+  <!-- BIOTECH -->
+  <!-- Hediffs_Global_Misc.xml -->
+  <!-- Hediffs_Various.xml -->
+  <!-- MentalStates_Special.xml -->
+  <!-- Recipes_Surgery_Misc.xml -->
+  <!-- ITabs.xml -->
 </LanguageData>

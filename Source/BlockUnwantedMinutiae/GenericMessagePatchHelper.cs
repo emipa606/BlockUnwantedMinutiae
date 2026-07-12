@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Verse;
 
@@ -25,8 +24,8 @@ internal static class GenericMessagePatchHelper
 
         foreach (var l in BUMMod.Instance.Settings.ActiveMessagePatches)
         {
-            var regex = CreateComparer(l.Translate()); 
-            
+            var regex = CreateComparer(l.Translate());
+
             if (!regex.IsMatch(text))
             {
                 continue;
@@ -80,20 +79,20 @@ internal static class GenericMessagePatchHelper
 
     private static Regex CreateComparer(string target)
     {
-        string pattern = Regex.Escape(target);
-        
+        var pattern = Regex.Escape(target);
+
         if (LanguageDatabase.activeLanguage.FriendlyNameEnglish is "Korean")
         {
-            pattern = Regex.Replace(pattern, @"\\\(은\\\)는",   "(은|는)");
-            pattern = Regex.Replace(pattern, @"\\\(이\\\)가",   "(이|가)");
-            pattern = Regex.Replace(pattern, @"\\\(을\\\)를",   "(을|를)");
-            pattern = Regex.Replace(pattern, @"\\\(와\\\)과",   "(와|과)");
+            pattern = Regex.Replace(pattern, @"\\\(은\\\)는", "(은|는)");
+            pattern = Regex.Replace(pattern, @"\\\(이\\\)가", "(이|가)");
+            pattern = Regex.Replace(pattern, @"\\\(을\\\)를", "(을|를)");
+            pattern = Regex.Replace(pattern, @"\\\(와\\\)과", "(와|과)");
             pattern = Regex.Replace(pattern, @"\\\(으\\\)로", "(으로|로)");
         }
 
         pattern = Regex.Replace(pattern, @"\\{\S*?}", ".*");
         pattern = Regex.Replace(pattern, @"\.(\*)+", ".*");
-    
+
         return new Regex($"{pattern}", RegexOptions.IgnoreCase);
     }
 }

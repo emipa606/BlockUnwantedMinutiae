@@ -185,4 +185,29 @@
   <LetterLabelWastepackInfestation>Infestation des sacs à déchets</LetterLabelWastepackInfestation>
   <LetterLabelAncientMech>Mécanisme ancien</LetterLabelAncientMech>
   <LetterLabelAvailable>Disponible : {0}</LetterLabelAvailable>
+  <!-- Gatherings.xml -->
+  <!-- Hediffs_Global_Misc.xml -->
+  <!-- HediffGiverSets.xml -->
+  <!-- Inspirations.xml -->
+  <!-- MentalStateDefs -->
+  <!-- QuestScriptDefs -->
+  <!-- SurgeryOutcomeEffectDefs.xml -->
+  <!-- Storyteller -->
+  <!-- Incidents.xml -->
+  <!-- Messages.xml -->
+  <!-- Thoughts_Memory_Misc.xml -->
+  <!-- ROYALTY -->
+  <!-- Incidents_Map_Special.xml -->
+  <!-- Ritual_Behaviors.xml -->
+  <!-- Incidents_Map_Disease.xml -->
+  <!-- Misc_Gameplay.xml -->
+  <!-- IDEOLOGY -->
+  <!-- MentalStates_Mood.xml -->
+  <!-- WorkSites.xml -->
+  <!-- Incidents_World_Quests.xml -->
+  <!-- BIOTECH -->
+  <!-- HediffDefs -->
+  <!-- MentalStates_Special.xml -->
+  <!-- Incidents_Map_Threats.xml -->
+  <!-- ThingDefs_Buildings -->
 </LanguageData>
