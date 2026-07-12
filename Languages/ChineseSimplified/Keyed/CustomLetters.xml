@@ -150,7 +150,7 @@
   <LetterLabelViolatedDeparture>{0}违反：离开</LetterLabelViolatedDeparture>
   <LetterLabelBetrayal>背叛</LetterLabelBetrayal>
   <LetterLabelHospitalityReward>招待奖励</LetterLabelHospitalityReward>
-  <LetterLabelBetrayalReward>背叛奖励：{0｝</LetterLabelBetrayalReward>
+  <LetterLabelBetrayalReward>背叛奖励：{0}</LetterLabelBetrayalReward>
   <LetterLabelBetrayalRewardRetracted>撤回背叛奖励</LetterLabelBetrayalRewardRetracted>
   <LetterLabelShuttleArrived>穿梭机抵达</LetterLabelShuttleArrived>
   <LetterLabelShuttleDestroyed>被摧毁的穿梭机</LetterLabelShuttleDestroyed>
@@ -191,7 +191,7 @@
   <LetterLabelPoluxTree>Polux 树芽</LetterLabelPoluxTree>
   <!-- MentalStates_Special.xml -->
   <LetterLabelFleeingFire>逃离火焰：{0}</LetterLabelFleeingFire>
-  <LetterLabelWarcall>战吼狂暴：{0｝</LetterLabelWarcall>
+  <LetterLabelWarcall>战吼狂暴：{0}</LetterLabelWarcall>
   <LetterLabelBossDefeated>{0} 战败：{1}</LetterLabelBossDefeated>
   <LetterLabelMechanitorShip>机械师飞船</LetterLabelMechanitorShip>
   <LetterLabelMechanoidAttack>机械体攻击</LetterLabelMechanoidAttack>
