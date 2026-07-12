@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Verse;
 
@@ -24,10 +25,9 @@ internal static class GenericMessagePatchHelper
 
         foreach (var l in BUMMod.Instance.Settings.ActiveMessagePatches)
         {
-            var targetMsg = replaceTags(l.Translate());
-            var regex = new Regex($".*{targetMsg}");
-
-            if (regex.Match(text).Length <= 0)
+            var regex = CreateComparer(l.Translate()); 
+            
+            if (!regex.IsMatch(text))
             {
                 continue;
             }
@@ -56,10 +56,9 @@ internal static class GenericMessagePatchHelper
 
         foreach (var l in BUMMod.Instance.Settings.ActiveLetterPatches)
         {
-            var targetMsg = replaceTags(l.Translate());
-            var regex = new Regex($"{targetMsg}");
+            var regex = CreateComparer(l.Translate());
 
-            if (regex.Match(text).Length <= 0)
+            if (!regex.IsMatch(text))
             {
                 continue;
             }
@@ -70,7 +69,7 @@ internal static class GenericMessagePatchHelper
 
         if (BUMMod.Instance.Settings.ShouldBlock(text))
         {
-            messagePatchesLookup[text] = false;
+            letterPatchesLookup[text] = false;
             return false;
         }
 
@@ -79,9 +78,22 @@ internal static class GenericMessagePatchHelper
         return true;
     }
 
-    private static string replaceTags(string text)
+    private static Regex CreateComparer(string target)
     {
-        var regex = new Regex(@"{\S*}");
-        return regex.Replace(text, ".*");
+        string pattern = Regex.Escape(target);
+        
+        if (LanguageDatabase.activeLanguage.FriendlyNameEnglish is "Korean")
+        {
+            pattern = Regex.Replace(pattern, @"\\\(은\\\)는",   "(은|는)");
+            pattern = Regex.Replace(pattern, @"\\\(이\\\)가",   "(이|가)");
+            pattern = Regex.Replace(pattern, @"\\\(을\\\)를",   "(을|를)");
+            pattern = Regex.Replace(pattern, @"\\\(와\\\)과",   "(와|과)");
+            pattern = Regex.Replace(pattern, @"\\\(으\\\)로", "(으로|로)");
+        }
+
+        pattern = Regex.Replace(pattern, @"\\{\S*?}", ".*");
+        pattern = Regex.Replace(pattern, @"\.(\*)+", ".*");
+    
+        return new Regex($"{pattern}", RegexOptions.IgnoreCase);
     }
 }

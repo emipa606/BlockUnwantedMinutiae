@@ -80,6 +80,9 @@ ipch/
 # TFS 2012 Local Workspace
 $tf/
 
+# JetBrains User-specific files
+.idea/
+
 # Guidance Automation Toolkit
 *.gpState
 
