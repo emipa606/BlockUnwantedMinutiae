@@ -92,4 +92,4 @@ This mod blocks some unwanted messages, alerts, letters, and misc features that 
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/BlockUnwantedMinutiae?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3278213153) | tags: quality of life
+[![Image](https://img.shields.io/github/v/release/emipa606/BlockUnwantedMinutiae?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3278213153) | quality of life

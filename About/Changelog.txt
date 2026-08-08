@@ -1,5 +1,8 @@
 # Changelog for BlockUnwantedMinutiae
 
+1.6.4 - Updated chinese translation, thanks QuleeNAE
+
+
 1.6.3 - The old zip was included for some reason
 
 
