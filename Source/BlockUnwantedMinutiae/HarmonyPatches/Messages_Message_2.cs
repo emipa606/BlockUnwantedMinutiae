@@ -8,7 +8,7 @@ namespace BlockUnwantedMinutiae.HarmonyPatches;
     typeof(bool))]
 internal static class Messages_Message_2
 {
-    private static bool Prefix(string text)
+    public static bool Prefix(string text)
     {
         return GenericMessagePatchHelper.ContainsMessage(text);
     }

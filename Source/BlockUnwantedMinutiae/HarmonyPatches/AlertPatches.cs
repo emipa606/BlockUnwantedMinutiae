@@ -9,7 +9,7 @@ using Verse;
 namespace BlockUnwantedMinutiae.HarmonyPatches;
 
 [HarmonyPatch]
-internal class AlertPatches
+internal static class AlertPatches
 {
     private static readonly ReadOnlyDictionary<string, string> classMap = new(
         new Dictionary<string, string>

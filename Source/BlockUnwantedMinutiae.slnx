@@ -12,10 +12,10 @@
     <File Path="../Languages/English/Keyed/CustomMessages.xml" />
     <File Path="../Languages/English/Keyed/Settings.xml" />
   </Folder>
-  <Folder Name="/XML/1.6/Defs/">
-    <File Path="../1.6/Defs/UpdateInfo.xml" />
-  </Folder>
   <Folder Name="/XML/About/">
     <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/">
+    <File Path="../1.7/Defs/UpdateInfo.xml" />
   </Folder>
 </Solution>

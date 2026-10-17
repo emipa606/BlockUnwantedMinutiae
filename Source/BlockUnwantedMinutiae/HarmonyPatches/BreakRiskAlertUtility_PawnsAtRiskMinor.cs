@@ -8,7 +8,7 @@ namespace BlockUnwantedMinutiae.HarmonyPatches;
 [HarmonyPatch(typeof(BreakRiskAlertUtility), nameof(BreakRiskAlertUtility.PawnsAtRiskMinor), MethodType.Getter)]
 internal static class BreakRiskAlertUtility_PawnsAtRiskMinor
 {
-    private static void Postfix(ref List<Pawn> __result)
+    public static void Postfix(ref List<Pawn> __result)
     {
         if (BUMMod.Instance.Settings.GetGenericAlertPatchValue("BreakRiskMinor"))
         {

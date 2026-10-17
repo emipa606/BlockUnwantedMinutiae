@@ -80,9 +80,6 @@ ipch/
 # TFS 2012 Local Workspace
 $tf/
 
-# JetBrains User-specific files
-.idea/
-
 # Guidance Automation Toolkit
 *.gpState
 
@@ -163,6 +160,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
+.cr
 
 # RIA/Silverlight projects
 Generated_Code/
@@ -237,3 +235,11 @@ $RECYCLE.BIN/
 # Rimworld specific
 _PublisherPlus.xml
 lastrun.log
+
+# Continue
+.continue
+build_output.txt
+
+# SonarQube
+.sonarlint
+.sonarqube

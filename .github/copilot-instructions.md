@@ -1,58 +1,60 @@
-# GitHub Copilot Instructions for Block Unwanted Minutiae (Continued)
+# GitHub Copilot Instructions: Block Unwanted Minutiae (Continued)
 
 ## Mod Overview and Purpose
 
-The "Block Unwanted Minutiae (Continued)" mod aims to enhance the quality of life for RimWorld players by providing a customizable experience to block certain unwanted messages, alerts, and letters that occur during gameplay. The mod offers settings to enable or disable specific notifications so players can focus on more important aspects of their game without unnecessary interruptions.
+Block Unwanted Minutiae is a RimWorld mod designed to enhance player experience by providing control over the game's alerts, messages, and letters. This is a continuation and update of mr_chimick's original mod, revised for compatibility with new versions of RimWorld (1.3 and 1.4). The primary purpose is to allow players to block unwanted in-game minutiae that may be distracting, thus streamlining notifications to focus only on what's important.
 
 ## Key Features and Systems
 
-- **Messages Filtering**: Filter out unwelcome messages like detailed information about apparel deterioration, while keeping essential notifications active.
-- **Alerts Management**: Customize which alerts are shown, such as only counting colonists for idle alerts and not guests.
-- **Letters Management**: Choose which letters and notifications you want to see, enabling a clutter-free notification system.
-- **Miscellaneous Features**: Disable automatic selections in the form caravan menu for a more customizable caravan planning experience.
-- **Custom Filters**: Recently added feature allowing players to set up custom filters as per their preference.
+- **Custom Filters**: Added possibility to customize filters for alerts, messages, and letters to block or allow specific notifications.
+  
+- **Messages Management**: 
+  - Block non-essential messages such as tainted apparel deterioration while keeping important ones active.
+  - Intuitive search and block functionality for standard vanilla messages.
+
+- **Alerts Management**:
+  - Customize alerts, such as idle colonists, with functionality that isolates colonist alerts without guest interruptions.
+  - Comprehensive search and block tools for vanilla alerts.
+
+- **Letters Management**:
+  - Searchable and blockable vanilla letters list, enabling players to manage narrative elements selectively.
+
+- **Miscellaneous Features**:
+  - Disabling of the auto-select button for food and travel supplies in caravans, giving players manual control over logistics.
 
 ## Coding Patterns and Conventions
 
-- **C# Naming Conventions**:
-  - Use PascalCase for class and method names (e.g., `BreakRiskAlertUtility_PawnsAtRiskExtreme`).
-  - Method members follow a clear naming convention indicating their purpose (`Postfix`, `Prefix`, `TargetMethods`).
-
-- **Code Structure**:
-  - Separate different types of functionalities using distinct files for better organization. Patch-specific logic is housed under the `HarmonyPatches` directory.
-  - Helper methods are located in a centralized file like `GenericMessagePatchHelper.cs` to be reused across various patches.
+- The project follows a structured C# coding style with clear type and member declarations across Harmony patches.
+- Class and method naming conventions are descriptive and follow PascalCase, ensuring readability.
+- Extensive use of C# features like classes and methods to manage game logic, with code grouped logically by functionality (e.g., alerts, messages).
 
 ## XML Integration
 
-- XML files are used to define mod metadata and dependencies, such as in `About.xml` and `Manifest.xml`.
-- Custom XML definitions can be added in files like `UpdateInfo.xml` to manage specific game elements influenced by the mod.
-- XML integration ensures that mod data is structured and easily extensible for future updates.
+- The mod includes XML files for defining update information, dependencies, and manifest entries.
+- XML files are used to integrate mod content with different parts of RimWorld's game environment.
+- Ensure XML entries are correctly formatted and validate against RimWorld's schema for smooth integration.
 
 ## Harmony Patching
 
-- **Harmony**: The mod uses Harmony, a library for patching, to modify existing game behavior without directly altering the game's source code.
-- **Patch Types**:
-  - Use `Prefix` and `Postfix` methods within patch classes to hook into specific game functions.
-  - `TargetMethods` lists which original game methods are affected by the patches, allowing precise control over game logic modifications.
+- Harmony is used extensively to modify game behavior without altering original game files.
+- Custom patches are implemented for specific game alerts and messages, utilizing `Prefix` and `Postfix` methods.
+- **Important Patches Include**:
+  - `Alert_ColonistsIdle_IdleColonists`: Adjustments to idle colonist notifications.
+  - `BreakRiskAlertUtility_PawnsAtRiskExtreme` and `Major`: Tweaks to risk alert levels.
+  - `Alert_Thought_GetReport`: Modifies the generation of thought reports for notifications.
 
 ## Suggestions for Copilot
 
-1. **Automation of Routine Code**:
-   - Allow Copilot to auto-generate boilerplate Harmony patch setups, providing stubs for `Prefix` and `Postfix` methods along with logging to verify patch application.
+- Automatically suggest namespace and dependency imports for C# files based on the mod's existing use of Harmony and RimWorld API.
+- Provide common XML patterns, such as defentries and dependencies, that align with RimWorld's modding standards.
+- Offer hint snippets for frequent coding tasks, like adding new filters in C# or understanding RimWorld's notification structure.
+- Suggest code refactoring opportunities in C# to keep the project maintainable and efficient.
+- When adding new Harmony patches, suggest possible `TargetMethods` and common patch types (`Prefix`, `Postfix`, `Transpiler`).
 
-2. **XML Editing**:
-   - Provide Copilot with context about XML structure so it can intelligently autofill fields related to dependencies and versioning.
+By following these guidelines and leveraging GitHub Copilot effectively, contributors can continue to enhance and maintain the Block Unwanted Minutiae mod to meet evolving community needs and updates in RimWorld.
 
-3. **Comprehensive Logging**:
-   - Encourage generating detailed logging within patches to track what messages or alerts are being blocked.
 
-4. **Custom Filter Tools**:
-   - Use Copilot to support more complex algorithms for filter creation, especially handling dynamically altering notification lists.
-
-5. **Settings UI**:
-   - Leverage Copilot to develop intuitive UI elements for mod settings that allow players to toggle various notifications on and off seamlessly.
-
-These guidelines and suggestions will aid in maintaining the mod's quality, fostering clean code practices, and enriching the development experience through tools like GitHub Copilot.
+This document should provide detailed guidance and assistance in using GitHub Copilot for maintaining and extending the "Block Unwanted Minutiae (Continued)" mod project.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -66,4 +68,6 @@ These guidelines and suggestions will aid in maintaining the mod's quality, fost
 ## Hard rules (must follow)
 - Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
 - Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
 

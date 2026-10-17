@@ -11,16 +11,16 @@ public class BUMSettings : ModSettings
     public readonly bool[] GenericLetterValues = new bool[GenericLetterLabels.Count];
 
     public readonly bool[] GenericMessageValues = new bool[GenericMessageLabels.Count];
+    public bool DrawAutoSelectCheckboxPatch = true;
+    public bool IdleColonistsPatch = true;
+
+    public bool TaintedMessagePatch = true;
     private List<string> activeAlertPatches;
     private List<string> activeLetterPatches;
     private List<string> activeMessagePatches;
 
     private List<string> customFilters = [];
-    public bool DrawAutoSelectCheckboxPatch = true;
-    public bool IdleColonistsPatch = true;
     private List<string> seenText = [];
-
-    public bool TaintedMessagePatch = true;
 
     public List<string> CustomFilters
     {
@@ -1397,20 +1397,7 @@ public class BUMSettings : ModSettings
 
     public bool ShouldBlock(string text)
     {
-        if (string.IsNullOrEmpty(text))
-        {
-            return false;
-        }
-
-        foreach (var customFilter in CustomFilters)
-        {
-            if (Matches(customFilter, text))
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return !string.IsNullOrEmpty(text) && CustomFilters.Any(filter => Matches(filter, text));
     }
 
     public static bool Matches(string filter, string text)
@@ -1434,6 +1421,6 @@ public class BUMSettings : ModSettings
 
         var resultingString = string.Join(".*", resultingArray);
 
-        return Regex.IsMatch(text, resultingString, RegexOptions.IgnoreCase);
+        return Regex.IsMatch(text, resultingString, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(1));
     }
 }

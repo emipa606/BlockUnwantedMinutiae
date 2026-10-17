@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using HarmonyLib;
 using Verse;
 
@@ -9,7 +10,7 @@ namespace BlockUnwantedMinutiae.HarmonyPatches;
     typeof(bool))]
 internal static class Messages_Message_4
 {
-    private static bool Prefix(string text)
+    public static bool Prefix(string text)
     {
         if (!BUMMod.Instance.Settings.TaintedMessagePatch)
         {
@@ -19,7 +20,7 @@ internal static class Messages_Message_4
         string targetMsg = "MessageDeterioratedAway".Translate(""); // blank arg so we don't have {0}
         var pattern = $@".*T\)\s*{targetMsg}";
 
-        var regex = new Regex(pattern);
+        var regex = new Regex(pattern, RegexOptions.None, TimeSpan.FromSeconds(1));
 
         return regex.Match(text).Length <= 0;
     }

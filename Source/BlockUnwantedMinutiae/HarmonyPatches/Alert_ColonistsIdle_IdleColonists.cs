@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -10,7 +11,7 @@ namespace BlockUnwantedMinutiae.HarmonyPatches;
     MethodType.Getter)] // can't use alternate annotation because member is private
 internal static class Alert_ColonistsIdle_IdleColonists
 {
-    private static void Postfix(ref List<Pawn> __result)
+    public static void Postfix(ref List<Pawn> __result)
     {
         if (!BUMMod.Instance.Settings.IdleColonistsPatch)
         {
@@ -18,12 +19,9 @@ internal static class Alert_ColonistsIdle_IdleColonists
         }
 
         var nonGuests = new List<Pawn>();
-        foreach (var pawn in __result)
+        foreach (var pawn in __result.Where(pawn => !pawn.IsQuestLodger()))
         {
-            if (!pawn.IsQuestLodger())
-            {
-                nonGuests.Add(pawn);
-            }
+            nonGuests.Add(pawn);
         }
 
         __result = nonGuests;

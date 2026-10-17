@@ -11,7 +11,7 @@ namespace BlockUnwantedMinutiae.HarmonyPatches;
     typeof(int), typeof(bool))]
 internal static class LetterStack_ReceiveLetter_1
 {
-    private static bool Prefix(TaggedString label)
+    public static bool Prefix(TaggedString label)
     {
         return GenericMessagePatchHelper.ContainsLetter(label.ToString());
     }

@@ -6,7 +6,7 @@ namespace BlockUnwantedMinutiae.HarmonyPatches;
 [HarmonyPatch(typeof(Alert_Thought), nameof(Alert_Thought.GetReport))]
 internal static class Alert_Thought_GetReport
 {
-    private static bool Prefix(Alert_Thought __instance)
+    public static bool Prefix(Alert_Thought __instance)
     {
         switch (__instance)
         {

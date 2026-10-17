@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Verse;
 
@@ -83,16 +84,16 @@ internal static class GenericMessagePatchHelper
 
         if (LanguageDatabase.activeLanguage.FriendlyNameEnglish is "Korean")
         {
-            pattern = Regex.Replace(pattern, @"\\\(은\\\)는", "(은|는)");
-            pattern = Regex.Replace(pattern, @"\\\(이\\\)가", "(이|가)");
-            pattern = Regex.Replace(pattern, @"\\\(을\\\)를", "(을|를)");
-            pattern = Regex.Replace(pattern, @"\\\(와\\\)과", "(와|과)");
-            pattern = Regex.Replace(pattern, @"\\\(으\\\)로", "(으로|로)");
+            pattern = Regex.Replace(pattern, @"\\\(은\\\)는", "(은|는)", RegexOptions.None, TimeSpan.FromSeconds(1));
+            pattern = Regex.Replace(pattern, @"\\\(이\\\)가", "(이|가)", RegexOptions.None, TimeSpan.FromSeconds(1));
+            pattern = Regex.Replace(pattern, @"\\\(을\\\)를", "(을|를)", RegexOptions.None, TimeSpan.FromSeconds(1));
+            pattern = Regex.Replace(pattern, @"\\\(와\\\)과", "(와|과)", RegexOptions.None, TimeSpan.FromSeconds(1));
+            pattern = Regex.Replace(pattern, @"\\\(으\\\)로", "(으로|로)", RegexOptions.None, TimeSpan.FromSeconds(1));
         }
 
-        pattern = Regex.Replace(pattern, @"\\{\S*?}", ".*");
-        pattern = Regex.Replace(pattern, @"\.(\*)+", ".*");
+        pattern = Regex.Replace(pattern, @"\\{\S*?}", ".*", RegexOptions.None, TimeSpan.FromSeconds(1));
+        pattern = Regex.Replace(pattern, @"\.(\*)+", ".*", RegexOptions.None, TimeSpan.FromSeconds(1));
 
-        return new Regex($"{pattern}", RegexOptions.IgnoreCase);
+        return new Regex($"{pattern}", RegexOptions.IgnoreCase, TimeSpan.FromSeconds(1));
     }
 }
